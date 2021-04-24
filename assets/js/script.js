@@ -47,13 +47,19 @@ var getCrypto = function (cryptoName) {
                         // create html elements 
 
                         var wallet = document.createElement("div");
+
+                        var addBtnEl = document.createElement("button")
+                        addBtnEl.textContent = "Add to Wallet"
+                        addBtnEl.className = "search-btn";
                         
-                        var nameEl = document.createElement("h2");
+                        var nameEl = document.createElement("h4");
                         nameEl.textContent = "Name: " + getCoinName;
                         
                         var imageEl = document.createElement("img");
                         imageEl.setAttribute("src", getCoinImg);
                         imageEl.setAttribute("alt", getCoinName + " icon");
+                        imageEl.style.width = "50px";
+                        imageEl.style.height = "50px";
 
                         var priceEl = document.createElement("p");
                         priceEl.textContent = "Current Price: $" + getCoinPrice + " USD";
@@ -70,7 +76,9 @@ var getCrypto = function (cryptoName) {
                         wallet.appendChild(priceEl);
                         wallet.appendChild(priceChangeEl);
                         wallet.appendChild(percentageChangeEL);
+                        wallet.appendChild(addBtnEl);
                         // append div to the page
+                        searchResultsEL.innerHTML = "";
                         searchResultsEL.appendChild(wallet);
                     });
             }
