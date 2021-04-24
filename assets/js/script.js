@@ -3,6 +3,7 @@ var cryptoFormEl = document.querySelector("#crypto-form");
 var searchButtonEl = document.querySelector("#search-btn");
 var cryptoInputEl = document.querySelector("#crypto-search");
 var cryptoInformationEL = document.querySelector("#search-info");
+var searchResultsEL = document.querySelector("#coin-results");
 
 // submit event handler
 var cryptoSubmitHandler = function (event) {
@@ -35,7 +36,7 @@ var getCrypto = function (cryptoName) {
                     .then(function (data) {
                         console.log(data);
 
-
+                        // variables for internal information
                         var getCoinPrice = data[0].current_price;
                         var getCoinName = data[0].name;
                         var getCoinImg = data[0].image;
@@ -43,6 +44,34 @@ var getCrypto = function (cryptoName) {
                         var coinPriceChange = data[0].price_change_24h;
                         
 
+                        // create html elements 
+
+                        var wallet = document.createElement("div");
+                        
+                        var nameEl = document.createElement("h2");
+                        nameEl.textContent = "Name: " + getCoinName;
+                        
+                        var imageEl = document.createElement("img");
+                        imageEl.setAttribute("src", getCoinImg);
+                        imageEl.setAttribute("alt", getCoinName + " icon");
+
+                        var priceEl = document.createElement("p");
+                        priceEl.textContent = "Current Price: $" + getCoinPrice + " USD";
+
+                        var priceChangeEl = document.createElement("p");
+                        priceChangeEl.textContent = "Price change last 24hr: $" + coinPriceChange + " USD";
+
+                        var percentageChangeEL = document.createElement("p");
+                        percentageChangeEL.textContent = "Percentage Change last 24hr: " + coinChangePercent + "%";
+
+                        // append elements to the div
+                        wallet.appendChild(nameEl);
+                        wallet.appendChild(imageEl);
+                        wallet.appendChild(priceEl);
+                        wallet.appendChild(priceChangeEl);
+                        wallet.appendChild(percentageChangeEL);
+                        // append div to the page
+                        searchResultsEL.appendChild(wallet);
                     });
             }
             else {
