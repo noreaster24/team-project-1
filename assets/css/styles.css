@@ -22,13 +22,28 @@ header h1 {
     color: var(--tertiary-color);
     font-weight: bold;
     margin-bottom: 0;
+    margin-left: 20px;
+    padding: 5px;
+    text-shadow: 2px 2px var(--primary-color);
 }
 
 .search-container {
-    border: 1px solid var(--tertiary-color);
+    /* border: 1px solid var(--tertiary-color); */
     border-radius: 20px;
     padding: 20px;
+    margin: 0 20px 0 20px;
+    box-shadow: 4px 4px var(--secondary-color);
 }
+
+.search-container p {
+    font-size: 20px;
+}
+
+.user-wallet {
+    border-left: .5px solid var(--primary-color);
+}
+
+
 
 .search-btn {
     color: var(--secondary-color);
@@ -36,7 +51,7 @@ header h1 {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    width: 50%;
+    width: 25%;
     height: 3rem;
     border-radius: 20px;
 }
@@ -47,3 +62,10 @@ header h1 {
     background-color: var(--secondary-color);
 }
 
+.trend-container {
+    /* border: 2px solid var(--tertiary-color); */
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px;
+    box-shadow: 4px 4px var(--secondary-color);
+}

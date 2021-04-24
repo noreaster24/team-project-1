@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-    
+
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,900&display=swap"
         rel="stylesheet">
-        <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="./assets/css/styles.css">
     <title>CryptoKnight</title>
 </head>
 
@@ -28,7 +28,7 @@
                 <form id="crypto-form" class="price-checker cell large-4">
                     <h2 class="section-title">Search Crypto Prices</h2>
                     <p>Search for your favorite crypto currencies and add them to your wallet!</p>
-                    <form class="search"></form>
+                    <label for="crypto">Search for Crypto</label>
                     <input id="crypto-search" placeholder="Search for Crypto" type="text"><br>
                     <button id="search-btn" class="search-btn" type="search-btn">Search</button>
                 </form>
@@ -48,18 +48,22 @@
                 </div>
             </div>
         </div>
+
         <!-- Save these containers for future use -->
-        <!-- <div class="trend-container">
+        <div class="trend-container">
             <div class="accounts-overview grid-x">
+                <div class="search-results grid medium-4"></div>
                 <div class="price-tracker grid medium-4">
                     <h2>Price Alerts</h2>
                 </div>
-                <div class="price-history grid medium-8">
+                <div class="price-history grid medium-4">
                     <h2>Price Trends</h2>
                 </div>
             </div>
-        </div> -->
+        </div>
     </main>
+
+
     <script src="./assets/js/script.js"></script>
 </body>
 
