@@ -9,8 +9,11 @@
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,900&display=swap"
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700&display=swap"
         rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/styles.css">
     <title>CryptoKnight</title>
 </head>
@@ -29,7 +32,7 @@
                     <h2 class="section-title">Search Crypto Prices</h2>
                     <p>Search for your favorite crypto currencies and add them to your wallet!</p>
                     <label for="crypto">Search for Crypto</label>
-                    <input id="crypto-search" placeholder="Search for Crypto" type="text"><br>
+                    <input id="crypto-search" class="search-box" placeholder="Search for Crypto" type="text"><br>
                     <button id="search-btn" class="search-btn" type="search-btn">Search</button>
                 </form>
 
@@ -52,7 +55,7 @@
         <!-- Save these containers for future use -->
         <div class="trend-container">
             <div class="accounts-overview grid-x">
-                <div class="search-results grid medium-4"></div>
+                <div id="coin-results" class="search-results grid medium-4"></div>
                 <div class="price-tracker grid medium-4">
                     <h2>Price Alerts</h2>
                 </div>
