@@ -4,3 +4,6 @@ We designed CryptoKnight to be a useful dashboard for cryptocurrency investors t
 * You can search for your favorite cryptocurrencies to find their current price.
 * You can select the number of coins purchased for each cryptocurrency and input the price you paid when you bought them.
 * Once added to your Wallet, CryptoKnight will show you your total profit or loss on your investments for each cryptocurrency, as well as your total Wallet value and profit/loss.
+
+
+![homepage](/.assets/images/homepage.png)
