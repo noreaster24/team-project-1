@@ -35,13 +35,13 @@ header {
 
 header h1 {
     color: var(--tertiary-color);
-    font-family: 'Freckle Face', cursive;
+    font-family: 'Monoton', cursive;
     font-size: 72px;
-    font-weight: bold;
+    font-weight: lighter;
     margin-bottom: 0;
     margin-left: 20px;
     padding: 5px;
-    text-shadow: 2px 2px var(--primary-color);
+    text-shadow: 3px 4px var(--primary-color);
 }
 
 .price-checker h2 {
@@ -111,17 +111,30 @@ header h1 {
     box-shadow: 4px 4px var(--secondary-color);
     
 }
-
 .pop-up-div {
+}
+.search-results h4 {
+    color: var(--primary-color);
+    font-family: 'Pacifico', cursive;
+    font-size: 54px;
+    margin-bottom: 0;
+    margin-left: 20px;
+    padding: 5px;
+    text-shadow: 4px 4px var(--tertiary-color);
+}
+.pop-up {
     border: 2px solid var(--tertiary-color);
     border-radius: 20px;
     padding: 20px;
     margin: 30px;
     box-shadow: 4px 4px var(--secondary-color);
 }
-
 .accounts-overview {
     display: flex; /* test */
     flex-direction: row;
     flex-wrap: wrap;
 }
+.pop-up-button {
+    
+}
+
