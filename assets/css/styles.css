@@ -22,6 +22,7 @@ header {
     background-color: #0F1123;
     border-radius: 20px;
     border-color: var(--secondary-color);
+    text-align: center;
 }
 
 .search-box::placeholder {
@@ -58,7 +59,7 @@ header h1 {
     box-shadow: 4px 4px var(--secondary-color);
 }
 
-.price-history {
+.trending {
     border: 2px solid var(--tertiary-color);
     border-radius: 20px;
     padding: 20px;
@@ -83,6 +84,10 @@ header h1 {
 
 .user-wallet {
     border-left: .5px solid var(--tertiary-color);
+    display: flex; /* test */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .search-btn {
@@ -111,8 +116,7 @@ header h1 {
     box-shadow: 4px 4px var(--secondary-color);
     
 }
-.pop-up-div {
-}
+
 .search-results h4 {
     color: var(--primary-color);
     font-family: 'Pacifico', cursive;
@@ -122,19 +126,36 @@ header h1 {
     padding: 5px;
     text-shadow: 4px 4px var(--tertiary-color);
 }
-.pop-up {
+.pop-up-div{
     border: 2px solid var(--tertiary-color);
     border-radius: 20px;
     padding: 20px;
     margin: 30px;
     box-shadow: 4px 4px var(--secondary-color);
+    text-align: center;
 }
 .accounts-overview {
     display: flex; /* test */
     flex-direction: row;
     flex-wrap: wrap;
-}
-.pop-up-button {
-    
+    justify-content: space-around;
 }
 
+.crypto-owned {
+    border-left: .5px solid var(--tertiary-color);
+    text-align: center;
+}
+ .crypto-owned h2 {
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+ .wallet-value h2 {
+     margin-left: auto;
+     margin-right: auto;
+ }
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+}
