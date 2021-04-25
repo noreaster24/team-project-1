@@ -47,13 +47,14 @@ var getCrypto = function (cryptoName) {
                         // create html elements 
 
                         var wallet = document.createElement("div");
+                        wallet.classList = "search-results"
 
                         var addBtnEl = document.createElement("button")
                         addBtnEl.textContent = "Add to Wallet"
                         addBtnEl.className = "search-btn";
                         
                         var nameEl = document.createElement("h4");
-                        nameEl.textContent = "Name: " + getCoinName;
+                        nameEl.textContent = getCoinName + " ";
                         
                         var imageEl = document.createElement("img");
                         imageEl.setAttribute("src", getCoinImg);
@@ -71,8 +72,8 @@ var getCrypto = function (cryptoName) {
                         percentageChangeEL.textContent = "Percentage Change last 24hr: " + coinChangePercent + "%";
 
                         // append elements to the div
-                        wallet.appendChild(nameEl);
-                        wallet.appendChild(imageEl);
+                        nameEl.appendChild(imageEl);
+                        wallet.appendChild(nameEl);                       
                         wallet.appendChild(priceEl);
                         wallet.appendChild(priceChangeEl);
                         wallet.appendChild(percentageChangeEL);
