@@ -50,7 +50,21 @@ header h1 {
     text-align: center;
 }
 
+.price-tracker {
+    border: 2px solid var(--tertiary-color);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px;
+    box-shadow: 4px 4px var(--secondary-color);
+}
 
+.price-history {
+    border: 2px solid var(--tertiary-color);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 30px;
+    box-shadow: 4px 4px var(--secondary-color);
+}
 
 .search-container {
     /* border: 1px solid var(--tertiary-color); */
@@ -64,11 +78,9 @@ header h1 {
 .search-container p {
     font-size: 20px;
     color: var(--tertiary-color);
+    text-align: center;
 }
 
-.crypto-search {
-    
-}
 .user-wallet {
     border-left: .5px solid var(--tertiary-color);
 }
@@ -79,9 +91,10 @@ header h1 {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    width: 25%;
+    width: -webkit-fill-available;
     height: 3rem;
     border-radius: 20px;
+    margin: 0 auto;
 }
 
 .search-btn:hover {
@@ -96,8 +109,10 @@ header h1 {
     padding: 20px;
     margin: 30px;
     box-shadow: 4px 4px var(--secondary-color);
+    
 }
-
+.pop-up-div {
+}
 .search-results h4 {
     color: var(--primary-color);
     font-family: 'Pacifico', cursive;
@@ -114,7 +129,12 @@ header h1 {
     margin: 30px;
     box-shadow: 4px 4px var(--secondary-color);
 }
-
+.accounts-overview {
+    display: flex; /* test */
+    flex-direction: row;
+    flex-wrap: wrap;
+}
 .pop-up-button {
     
 }
+
