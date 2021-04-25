@@ -47,7 +47,7 @@ var getCrypto = function (cryptoName) {
                         // create html elements 
 
                         var wallet = document.createElement("div");
-                        wallet.setAttribute("class", "pop-up");
+                        wallet.setAttribute("class", "pop-up-div");
 
                         var addBtnEl = document.createElement("button")
                         addBtnEl.textContent = "Add to Wallet"
