@@ -64,12 +64,15 @@ var getCrypto = function (cryptoName) {
 
                         var priceEl = document.createElement("p");
                         priceEl.textContent = "Current Price: $" + getCoinPrice + " USD";
+                        wallet.setAttribute("class", "pop-up-p");
 
                         var priceChangeEl = document.createElement("p");
                         priceChangeEl.textContent = "Price change last 24hr: $" + coinPriceChange + " USD";
+                        wallet.setAttribute("class", "pop-up-p2");
 
                         var percentageChangeEL = document.createElement("p");
                         percentageChangeEL.textContent = "Percentage Change last 24hr: " + coinChangePercent + "%";
+                        wallet.setAttribute("class", "pop-up-p3");
 
                         // append elements to the div
                         nameEl.appendChild(imageEl);
