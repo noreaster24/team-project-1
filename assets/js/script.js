@@ -90,6 +90,25 @@ var getCrypto = function (cryptoName) {
 
 }
 
+// below makes the heading flicker in upon load
+var target = window.document.getElementsByTagName('h1')[0]
+
+var flickerLetter = letter => `<span style="animation: text-flicker-in-glow ${Math.random()*4}s linear both ">${letter}</span>`
+var colorLetter = letter => `<span style="color: hsla">${letter}</span>`;
+var flickerAndColorText = text => 
+  text
+    .split('')
+    .map(flickerLetter)
+    .map(colorLetter)
+    .join('');
+var cryptoKnight = target => target.innerHTML = flickerAndColorText(target.textContent);
+
+
+cryptoKnight(target);
+target.onclick = ({ target }) =>  cryptoKnight(target);
+// ^^^^^ END OF FLICKER^^^^^
+
+
 // var cryptoDrop = function (cryptoName) {
 
 //     var getCurrentPrice = [0].current_price;
