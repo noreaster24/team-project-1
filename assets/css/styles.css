@@ -145,21 +145,18 @@ header h1 {
     border-left: .5px solid var(--tertiary-color);
     text-align: center;
 }
- .crypto-owned h2 {
-    margin-left: auto;
-    margin-right: auto;
- }
 
- .wallet-value h2 {
-     margin-left: auto;
-     margin-right: auto;
- }
-
-.container {
+.crypto-owned h2 {
     margin-left: auto;
     margin-right: auto;
 }
 
-.trending-container {
-    
+.wallet-value h2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -113,35 +113,36 @@ var trendingCoins = function () {
 
             if (response.ok) {
                 response.json()
-                .then(function(data) {
-                    console.log(data);
+                    .then(function (data) {
+                        console.log(data);
+                        for (var i = 0; i < data.length; i++) {
+                            // variables for internal information
+                            var trendingCoinName = data[i].name
+                            var trendingCoinSymbol = data[i].symbol
+                            var trendingCoinThumb = data[i].thumb
 
-                    // variables for internal information
-                    var trendingCoinName = data[0].name
-                    var trendingCoinSymbol = data[0].symbol
-                    var trendingCoinThumb = data[0].thumb
+                            var trendingNameEl = document.createElement("h4");
+                            trendingNameEl.textContent = trendingCoinName;
 
-                    var trendingNameEl = document.createElement("h4");
-                    trendingNameEl.textContent = trendingCoinName;
+                            var trendingSymbolEl = document.createElement("h4");
+                            trendingSymbolEl.textContent = trendingCoinSymbol;
 
-                    var trendingSymbolEl = document.createElement("h4");
-                    trendingSymbolEl.textContent = trendingCoinSymbol;
+                            var trendingImageEl = document.createElement("img");
+                            trendingImageEl.setAttribute("src", trendingCoinThumb);
+                            trendingImageEl.style.width = "50px";
+                            trendingImageEl.style.height = "50px";
 
-                    var trendingImageEl = document.createElement("img");
-                    trendingImageEl.setAttribute("src", trendingCoinThumb);
-                    trendingImageEl.style.width = "50px";
-                    trendingImageEl.style.height = "50px";
-
-                    // append elements to the trending dv
-                    trending.appendChild(trendingNameEl);
-                    trending.appendChild(trendingSymbolEl);
-                    trending.appendChild(trendingImageEl);
-                });
+                            // append elements to the trending dv
+                            trending.appendChild(trendingNameEl);
+                            trending.appendChild(trendingSymbolEl);
+                            trending.appendChild(trendingImageEl);
+                        }
+                    });
             }
             else {
                 console.log("error: " + response.statusText);
             }
-    })
+        })
 };
 
 searchButtonEl.addEventListener("click", cryptoSubmitHandler);
