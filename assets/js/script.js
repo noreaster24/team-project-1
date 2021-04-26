@@ -4,6 +4,8 @@ var searchButtonEl = document.querySelector("#search-btn");
 var cryptoInputEl = document.querySelector("#crypto-search");
 var cryptoInformationEL = document.querySelector("#search-info");
 var searchResultsEL = document.querySelector("#coin-results");
+var addToWallet = document.querySelector("#add-wallet");
+var whatToWatch = document.querySelector("#what-to-watch");
 
 // submit event handler
 var cryptoSubmitHandler = function (event) {
@@ -21,8 +23,23 @@ var cryptoSubmitHandler = function (event) {
         // needs modal here instead of console.log
         console.log("enter a crypto name.")
     }
-    
+
 }
+
+document.addEventListener("click", function(event) {
+    if( event.target && event.target.id== "add-wallet") {
+       var nameStorage = localStorage.getItem("cryptoName");
+       var priceStorage = localStorage.getItem("cryptoPrice");
+       var storageName = document.createElement("p");
+       var storagePrice = document.createElement("p");
+       storageName.innerHTML = "Name: " + nameStorage;
+       storagePrice.innerHTML = "Price: $" + priceStorage;
+       whatToWatch.appendChild(storageName);
+       whatToWatch.appendChild(storagePrice);
+
+    }
+})
+
 // fetch function to get type of coin by name.
 var getCrypto = function (cryptoName) {
 
@@ -42,7 +59,7 @@ var getCrypto = function (cryptoName) {
                         var getCoinImg = data[0].image;
                         var coinChangePercent = data[0].price_change_percentage_24h;
                         var coinPriceChange = data[0].price_change_24h;
-                        
+
 
                         // create html elements 
 
@@ -52,10 +69,11 @@ var getCrypto = function (cryptoName) {
                         var addBtnEl = document.createElement("button")
                         addBtnEl.textContent = "Add to Wallet"
                         addBtnEl.className = "search-btn";
-                        
+                        addBtnEl.setAttribute("id", "add-wallet");
+
                         var nameEl = document.createElement("h4");
                         nameEl.textContent = getCoinName + " ";
-                        
+
                         var imageEl = document.createElement("img");
                         imageEl.setAttribute("src", getCoinImg);
                         imageEl.setAttribute("alt", getCoinName + " icon");
@@ -73,7 +91,7 @@ var getCrypto = function (cryptoName) {
 
                         // append elements to the div
                         nameEl.appendChild(imageEl);
-                        wallet.appendChild(nameEl);                       
+                        wallet.appendChild(nameEl);
                         wallet.appendChild(priceEl);
                         wallet.appendChild(priceChangeEl);
                         wallet.appendChild(percentageChangeEL);
@@ -81,6 +99,9 @@ var getCrypto = function (cryptoName) {
                         // append div to the page
                         searchResultsEL.innerHTML = "";
                         searchResultsEL.appendChild(wallet);
+
+                       localStorage.setItem("cryptoName", getCoinName);
+                       localStorage.setItem("cryptoPrice", getCoinPrice);
                     });
             }
             else {
@@ -90,16 +111,9 @@ var getCrypto = function (cryptoName) {
 
 }
 
-// var cryptoDrop = function (cryptoName) {
-
-//     var getCurrentPrice = [0].current_price;
-
-//     console.log(getCurrentPrice);
-// }
 
 
-// var eventButtonHandler = function(event) {
 
 
-// }
 searchButtonEl.addEventListener("click", cryptoSubmitHandler);
+//addToWallet.addEventListener("click", eventButtonHandler);
