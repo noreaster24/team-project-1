@@ -112,6 +112,13 @@ target.onclick = ({ target }) =>  cryptoKnight(target);
 // ^^^^^ END OF FLICKER^^^^^
 
 
+$( "img" ).click(function() {
+  $( this ).hide().fadeIn(10000);
+});
+
+
+
+
 // var cryptoDrop = function (cryptoName) {
 
 //     var getCurrentPrice = [0].current_price;
@@ -121,7 +128,7 @@ target.onclick = ({ target }) =>  cryptoKnight(target);
 
 
 // var eventButtonHandler = function(event) {
-
+   
 
 // }
 searchButtonEl.addEventListener("click", cryptoSubmitHandler);

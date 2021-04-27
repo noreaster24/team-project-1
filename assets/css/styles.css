@@ -169,14 +169,117 @@ header {
 }
  
 
-.footer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
+
+
 
 
 @-webkit-keyframes text-flicker-in-glow{0%{opacity:0}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:none}10.2%{opacity:0;text-shadow:none}20%{opacity:0;text-shadow:none}20.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10)}20.6%{opacity:0;text-shadow:none}30%{opacity:0;text-shadow:none}30.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}30.5%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}30.6%{opacity:0;text-shadow:none}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}50%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}55%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}55.1%{opacity:0;text-shadow:none}57%{opacity:0;text-shadow:none}57.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35)}60%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35)}60.1%{opacity:0;text-shadow:none}65%{opacity:0;text-shadow:none}65.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75.1%{opacity:0;text-shadow:none}77%{opacity:0;text-shadow:none}77.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.4),0 0 110px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.4),0 0 110px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85.1%{opacity:0;text-shadow:none}86%{opacity:0;text-shadow:none}86.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.10),0 0 110px rgba(255,255,255,.10),0 0 100px rgba(255,255,255,.1)}100%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.10),0 0 110px rgba(255,255,255,.10),0 0 100px rgba(255,255,255,.1)}}@keyframes text-flicker-in-glow{0%{opacity:0}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:none}10.2%{opacity:0;text-shadow:none}20%{opacity:0;text-shadow:none}20.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10)}20.6%{opacity:0;text-shadow:none}30%{opacity:0;text-shadow:none}30.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}30.5%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}30.6%{opacity:0;text-shadow:none}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}50%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}55%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}55.1%{opacity:0;text-shadow:none}57%{opacity:0;text-shadow:none}57.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35)}60%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35)}60.1%{opacity:0;text-shadow:none}65%{opacity:0;text-shadow:none}65.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75.1%{opacity:0;text-shadow:none}77%{opacity:0;text-shadow:none}77.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.4),0 0 110px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.4),0 0 110px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85.1%{opacity:0;text-shadow:none}86%{opacity:0;text-shadow:none}86.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.10),0 0 110px rgba(255,255,255,.10),0 0 100px rgba(255,255,255,.1)}100%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.10),0 0 110px rgba(255,255,255,.10),0 0 100px rgba(255,255,255,.1)}}
 
+  
 
+/*falling currency test*/
+footer {
+    position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
 
+section{
+    height:25rem;
+    width:100%;
+    position:absolute ;  
+    background:radial-gradient(#333,#000);
+    display: flex;
+    flex-wrap: nowrap;
+    box-sizing: content-box;
+}
+    
+.coin{
+    position:absolute ;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    overflow: hidden;
+}
+    
+.coin div{
+    position:absolute ;
+    display:block ;
+    overflow: hidden;
+}
+    
+.coin div:nth-child(1){ 
+    animation:fall 15s linear infinite ;
+    animation-delay:-2s;
+}
+    
+.coin div:nth-child(2){
+    left:70%; 
+    animation:fall 15s linear infinite ;
+    animation-delay:-4s;
+    animation-timing-function: linear;
+}
+
+.coin div:nth-child(3){
+    left:10%; 
+    animation:fall 20s linear infinite ;
+    animation-delay:-7s;
+}
+    
+.coin div:nth-child(4){
+    left:50%; 
+    animation:fall 18s linear infinite ; 
+    animation-delay:-5s;
+}
+    
+.coin div:nth-child(5){
+    left:85%; 
+    animation:fall 14s linear infinite ;
+    animation-delay:-5s;
+}
+    
+.coin div:nth-child(6){
+    left:15%; 
+    animation:fall 16s linear infinite ;
+    animation-delay:-10s;
+}
+    
+.coin div:nth-child(7){
+    left:90%; 
+    animation:fall 15s linear infinite ;
+    animation-delay:-4s;
+}
+ 
+ 
+@keyframes fall{
+0% {
+ opacity:1;
+ top:-10%;
+ transform:translateX (20px) rotate(0deg);
+}
+
+20%{
+ opacity:0.8;
+ transform:translateX (-20px) rotate(45deg);
+}
+        
+40%{
+ transform:translateX (-20px) rotate(90deg);
+}
+        
+60%{
+ transform:translateX (-20px) rotate(135deg); 
+}
+        
+80%{
+ transform:translateX (-20px) rotate(180deg);
+}
+        
+100%{
+ top:110%;
+ transform:translateX (-20px) rotate(225deg);
+}
+}
+    
