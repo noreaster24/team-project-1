@@ -67,6 +67,13 @@ header h1 {
     box-shadow: 4px 4px var(--secondary-color);
 }
 
+.price-checker h2 {
+    font-style: bolder;
+    font-size: 3rem;
+}
+
+
+
 .search-container {
     /* border: 1px solid var(--tertiary-color); */
     border-radius: 20px;
