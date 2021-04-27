@@ -6,4 +6,3 @@ We designed CryptoKnight to be a useful dashboard for cryptocurrency investors t
 * Once added to your Wallet, CryptoKnight will show you your total profit or loss on your investments for each cryptocurrency, as well as your total Wallet value and profit/loss.
 
 
-![homepage](/.assets/images/homepage.png)

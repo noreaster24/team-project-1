@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
         integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500;600;700&display=swap"
@@ -31,21 +32,20 @@
                 <form id="crypto-form" class="price-checker cell large-4">
                     <h2 class="section-title">Search Crypto Prices</h2>
                     <p>Search for your favorite crypto currencies and add them to your wallet!</p>
-                    <label for="crypto">Search for Crypto</label>
                     <input id="crypto-search" class="search-box" placeholder="Search for Crypto" type="text"><br>
                     <button id="search-btn" class="search-btn" type="search-btn">Search</button>
                 </form>
 
                 <!-- Top right container to store your coins and see their pricing -->
-                <div class="user-wallet cell large-8">
+                <div class="user-wallet">
                     <div class="container grid-x grid-margin-x">
                         <!-- Show the total value of your crypto wallet -->
-                        <div class="wallet-value cell medium-4">
-                            <h2>Wallet Value</h1>
+                        <div class="wallet-value cell small-5">
+                            <h2>Wallet Value</h2>
                         </div>
-                        <!-- Shows the user every cryptocurrency they currently own including quantities -->
-                        <div class="crypto-owned cell medium-8">
-                            <h2>Wallet Contents</h1>
+                        <!-- Shows the user every crypto currency they currently own including quantities -->
+                        <div class="crypto-owned cell small-7">
+                            <h2>Wallet Contents</h2>
                         </div>
                     </div>
                 </div>
@@ -54,13 +54,20 @@
 
         <!-- Save these containers for future use -->
         <div class="trend-container">
+feature/trending-coins
+            <div class="accounts-overview">
+                <div id="coin-results" class="search-results grid small-4 medium-4"></div>
+                <!-- <div class="price-tracker grid small-4 medium-4">
+
             <div class="accounts-overview grid-x">
                 <div id="coin-results" class="search-results grid medium-4"></div>
                 <div class="price-tracker grid medium-4">
+ main
                     <h2>Price Alerts</h2>
-                </div>
-                <div class="price-history grid medium-4">
-                    <h2>Price Trends</h2>
+                </div> -->
+                <div class="trending grid small-12 medium-12">
+                    <h2>Trending</h2>
+                    <div id="trending-container" class="trending"></div>
                 </div>
             </div>
         </div>
