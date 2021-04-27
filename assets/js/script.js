@@ -1,4 +1,5 @@
 // global variables
+var storage = {};
 var cryptoFormEl = document.querySelector("#crypto-form");
 var searchButtonEl = document.querySelector("#search-btn");
 var cryptoInputEl = document.querySelector("#crypto-search");
@@ -26,19 +27,66 @@ var cryptoSubmitHandler = function (event) {
 
 }
 
-document.addEventListener("click", function(event) {
-    if( event.target && event.target.id== "add-wallet") {
-       var nameStorage = localStorage.getItem("cryptoName");
-       var priceStorage = localStorage.getItem("cryptoPrice");
-       var storageName = document.createElement("p");
-       var storagePrice = document.createElement("p");
-       storageName.innerHTML = "Name: " + nameStorage;
-       storagePrice.innerHTML = "Price: $" + priceStorage;
-       whatToWatch.appendChild(storageName);
-       whatToWatch.appendChild(storagePrice);
+document.addEventListener("click", function (event) {
+    if (event.target && event.target.id == "add-wallet") {
+        event.preventDefault();
+
+        // get info from local storage
+        var nameStorage = localStorage.getItem("cryptoName");
+        var priceStorage = localStorage.getItem("cryptoPrice");
+        var imgStorage = localStorage.getItem("cryptoImg");
+        // create elements for local storage info
+        var storageDiv = document.createElement("div");
+        storageDiv.setAttribute("id", "watching");
+        storageDiv.setAttribute("class", "pop-up-div")
+        console.log(storageDiv);
+
+        var storageImg = document.createElement("img");
+        storageImg.setAttribute("src", imgStorage + "  ");
+        storageImg.setAttribute("alt", nameStorage + " icon");
+        storageImg.style.width = "35px";
+        storageImg.style.height = "35px";
+        console.log(storageImg);
+
+        var storageName = document.createElement("h4");
+        storageName.innerHTML = nameStorage + "    ";
+        console.log(storageName);
+
+        var storagePrice = document.createElement("p");
+        storagePrice.innerHTML = "Price: $" + priceStorage;
+        console.log(storagePrice);
+
+        // append items to div
+        storageName.appendChild(storageImg);
+        storageDiv.appendChild(storageName);
+        storageDiv.appendChild(storagePrice);
+        // append div to the page
+        whatToWatch.appendChild(storageDiv);
+        console.log(storageDiv);
+
+        localStorage.setItem("crypto", whatToWatch);
+
+        // loadWatched();
+    }
+    if (whatToWatch === null) {
+        
 
     }
-})
+
+});
+
+function loadWatched() {
+    console.log("load")
+//   var storage = document.getElementById("watching")
+//   storage.innerHTML = localStorage.getItem("crypto");
+   if(storage === null) {
+       alert("empty")
+   }
+}
+
+function saveWatched() {
+    localStorage.setItem("crypto", JSON.parse(storage));
+}
 
 // fetch function to get type of coin by name.
 var getCrypto = function (cryptoName) {
@@ -82,12 +130,15 @@ var getCrypto = function (cryptoName) {
 
                         var priceEl = document.createElement("p");
                         priceEl.textContent = "Current Price: $" + getCoinPrice + " USD";
+                        wallet.setAttribute("class", "pop-up-p");
 
                         var priceChangeEl = document.createElement("p");
                         priceChangeEl.textContent = "Price change last 24hr: $" + coinPriceChange + " USD";
+                        wallet.setAttribute("class", "pop-up-p2");
 
                         var percentageChangeEL = document.createElement("p");
                         percentageChangeEL.textContent = "Percentage Change last 24hr: " + coinChangePercent + "%";
+                        wallet.setAttribute("class", "pop-up-p3");
 
                         // append elements to the div
                         nameEl.appendChild(imageEl);
@@ -100,8 +151,9 @@ var getCrypto = function (cryptoName) {
                         searchResultsEL.innerHTML = "";
                         searchResultsEL.appendChild(wallet);
 
-                       localStorage.setItem("cryptoName", getCoinName);
-                       localStorage.setItem("cryptoPrice", getCoinPrice);
+                        localStorage.setItem("cryptoName", getCoinName);
+                        localStorage.setItem("cryptoPrice", getCoinPrice);
+                        localStorage.setItem("cryptoImg", getCoinImg);
                     });
             }
             else {
@@ -111,9 +163,35 @@ var getCrypto = function (cryptoName) {
 
 }
 
+// below makes the heading flicker in upon load
+var target = window.document.getElementsByTagName('h1')[0]
+
+var flickerLetter = letter => `<span style="animation: text-flicker-in-glow ${Math.random() * 4}s linear both ">${letter}</span>`
+var colorLetter = letter => `<span style="color: hsla">${letter}</span>`;
+var flickerAndColorText = text =>
+    text
+        .split('')
+        .map(flickerLetter)
+        .map(colorLetter)
+        .join('');
+var cryptoKnight = target => target.innerHTML = flickerAndColorText(target.textContent);
+
+
+cryptoKnight(target);
+target.onclick = ({ target }) => cryptoKnight(target);
+// ^^^^^ END OF FLICKER^^^^^
+
+
+// var cryptoDrop = function (cryptoName) {
+
+//     var getCurrentPrice = [0].current_price;
+
+//     console.log(getCurrentPrice);
+// }
 
 
 
 
 searchButtonEl.addEventListener("click", cryptoSubmitHandler);
 //addToWallet.addEventListener("click", eventButtonHandler);
+loadWatched();
