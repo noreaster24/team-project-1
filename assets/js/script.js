@@ -7,6 +7,7 @@ var cryptoInformationEL = document.querySelector("#search-info");
 var searchResultsEL = document.querySelector("#coin-results");
 var addToWallet = document.querySelector("#add-wallet");
 var whatToWatch = document.querySelector("#what-to-watch");
+var trendingCoinEl = document.querySelector("#trending-container");
 
 // submit event handler
 var cryptoSubmitHandler = function (event) {
@@ -91,7 +92,7 @@ function saveWatched() {
 // fetch function to get type of coin by name.
 var getCrypto = function (cryptoName) {
 
-    var apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" + cryptoName
+    var apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" + cryptoName;
 
     fetch(apiUrl)
         .then(function (response) {
@@ -115,8 +116,7 @@ var getCrypto = function (cryptoName) {
                         wallet.setAttribute("class", "pop-up-div");
 
                         var addBtnEl = document.createElement("button")
-                        addBtnEl.textContent = "Add to Wallet"
-                        addBtnEl.className = "search-btn";
+                        addBtnEl.textContent = "Add to Wallet";
                         addBtnEl.setAttribute("id", "add-wallet");
 
                         var nameEl = document.createElement("h4");
@@ -195,3 +195,64 @@ target.onclick = ({ target }) => cryptoKnight(target);
 searchButtonEl.addEventListener("click", cryptoSubmitHandler);
 //addToWallet.addEventListener("click", eventButtonHandler);
 loadWatched();
+// }
+
+// API call to show the top trading cryptocurrencies within the last 24 hours
+var trendingCoins = function () {
+
+    var trendingApi = "https://api.coingecko.com/api/v3/search/trending"
+    fetch(trendingApi)
+        .then(function (response) {
+
+            if (response.ok) {
+                response.json()
+                    .then(function (data) {
+                        console.log(data);
+                        trendingCoinEl.innerHTML = "";
+                    for (var i = 0; i <= 6; i++) {
+                            // variables for internal information
+                            var trendingCoinItem = data.coins[i].item;
+                            var trendingCoinId = data.coins[i].item.id;
+                            var trendingCoinName = data.coins[i].item.name;
+                            var trendingCoinImg = data.coins[i].item.large;
+                            var trendingCoinMarket = data.coins[i].item.market_cap_rank;
+                            
+
+                            var trendList = document.createElement("div");
+                            trendList.setAttribute("class", "pop-up-div");
+
+                            var trendingNameEl = document.createElement("h4");
+                            trendingNameEl.textContent = trendingCoinName + "  ";
+
+                            var trendingIdEl = document.createElement("p");
+                            trendingIdEl.textContent = "Search ID:  " + trendingCoinId;
+
+                            var trendingMarketEl = document.createElement("p");
+                            trendingMarketEl.textContent = "Market Cap Rating: " + trendingCoinMarket;
+
+                            var trendingImageEl = document.createElement("img");
+                            trendingImageEl.setAttribute("src", trendingCoinImg);
+                            trendingImageEl.style.width = "50px";
+                            trendingImageEl.style.height = "50px";
+
+                            // append elements to the trending dv
+                            trendList.appendChild(trendingMarketEl);
+                            trendList.appendChild(trendingIdEl);
+                            trendingNameEl.appendChild(trendingImageEl);
+                            trendList.appendChild(trendingNameEl);
+
+                            // append the div to the page
+                            
+                            trendingCoinEl.appendChild(trendList);
+                            
+                        }
+                    });
+            }
+            else {
+                console.log("error: " + response.statusText);
+            }
+        })
+};
+
+searchButtonEl.addEventListener("click", cryptoSubmitHandler);
+trendingCoins();
