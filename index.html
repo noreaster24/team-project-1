@@ -25,14 +25,14 @@
         <h1>CryptoKnight</h1>
 
     </header>
-    <main class="main">
+    <main>
         <div class="grid-container fluid">
             <!-- Top left container to search for crypto currencies to add to your wallet -->
             <div class="search-container grid-x grid-margin-x">
                 <form id="crypto-form" class="price-checker cell large-4">
                     <h2 class="section-title">Search Crypto Prices</h2>
                     <p>Search for your favorite crypto currencies and add them to your wallet!</p>
-                    <input id="crypto-search" class="search-box" placeholder="Search for Crypto" type="text"><br>
+                    <input id="crypto-search" class="search-box" placeholder="Search for Crypto by ID" type="text"><br>
                     <button id="search-btn" class="search-btn" type="search-btn">Search</button>
                 </form>
 
@@ -44,20 +44,25 @@
                             <h2>Wallet Value</h2>
                         </div>
                         <!-- Shows the user every crypto currency they currently own including quantities -->
-                        <div class="crypto-owned cell small-7">
-                            <h2>Wallet Contents</h2>
+                        <div id="what-to-watch" class="crypto-owned cell medium-8">
+                            <h2>Wallet Contents</h1>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        
         <!-- Save these containers for future use -->
         <div class="trend-container">
+            feature/trending-coins
             <div class="accounts-overview">
                 <div id="coin-results" class="search-results grid small-4 medium-4"></div>
-                <div class="price-tracker grid small-4 medium-4">
+                <!-- <div class="price-tracker grid small-4 medium-4">
+
+            <div class="accounts-overview grid-x">
+                <div id="coin-results" class="search-results grid medium-4"></div>
+                <div class="price-tracker grid medium-4">
+ 
                     <h2>Price Alerts</h2>
                 </div>
                 <div class="trending grid small-4 medium-4">
