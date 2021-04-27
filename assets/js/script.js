@@ -121,6 +121,9 @@ var trendingCoins = function () {
                             var trendingCoinSymbol = data[i].symbol
                             var trendingCoinThumb = data[i].thumb
 
+                            var trendList = document.createElement("div");
+                            trendList.setAttribute("class", "pop-up-div");
+
                             var trendingNameEl = document.createElement("h4");
                             trendingNameEl.textContent = trendingCoinName;
 
@@ -133,9 +136,13 @@ var trendingCoins = function () {
                             trendingImageEl.style.height = "50px";
 
                             // append elements to the trending dv
-                            trending.appendChild(trendingNameEl);
-                            trending.appendChild(trendingSymbolEl);
-                            trending.appendChild(trendingImageEl);
+                            trendList.appendChild(trendingNameEl);
+                            trendList.appendChild(trendingSymbolEl);
+                            trendList.appendChild(trendingImageEl);
+
+                            // append the div to the page
+                            trendingCoinEl.innerHTML = "";
+                            trendingCoinEl.appendChild(trendList);
                         }
                     });
             }

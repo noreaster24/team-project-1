@@ -160,3 +160,18 @@ header h1 {
     margin-left: auto;
     margin-right: auto;
 }
+
+.tending {
+    margin: 0;
+    padding: 0;
+}
+
+.trending h2 {
+    margin-bottom: 0;
+    text-align:left;
+
+}
+
+.trending-container {
+    margin: 0;
+}
