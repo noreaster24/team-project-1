@@ -71,6 +71,13 @@ header {
     box-shadow: 4px 4px var(--secondary-color);
 }
 
+.price-checker h2 {
+    font-style: bolder;
+    font-size: 3rem;
+}
+
+
+
 .search-container {
     border: 1px solid var(--tertiary-color); 
     border-radius: 20px;
@@ -116,7 +123,8 @@ header {
 }
 
 
-.search-results h4 {
+.search-results h4,
+.pop-up-div h4 {
     color: var(--primary-color);
     font-family: 'Pacifico', cursive;
     font-size: 54px;
@@ -134,6 +142,9 @@ header {
     text-align: center;
     font-family: sans-serif;
 }
+
+ 
+
 .accounts-overview {
     
     justify-content: space-evenly;
@@ -143,15 +154,16 @@ header {
     border-left: .5px solid var(--tertiary-color);
     text-align: center;
 }
- .crypto-owned h2 {
+
+.crypto-owned h2 {
     margin-left: auto;
     margin-right: auto;
- }
+}
 
- .wallet-value h2 {
-     margin-left: auto;
-     margin-right: auto;
- }
+.wallet-value h2 {
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .container {
     margin-left: auto;
@@ -250,6 +262,7 @@ section{
  transform:translateX (20px) rotate(0deg);
 }
 
+
 20%{
  opacity:0.8;
  transform:translateX (-20px) rotate(45deg);
@@ -272,3 +285,19 @@ section{
  transform:translateX (-20px) rotate(225deg);
 }
 }
+
+.tending {
+    margin: 0;
+    padding: 0;
+}
+
+.trending h2 {
+    margin-bottom: 0;
+    text-align:left;
+
+}
+
+.trending-container {
+    margin: 0;
+}
+

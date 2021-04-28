@@ -40,17 +40,22 @@
                 <div class="user-wallet grid-container full">
                     <div class="container grid-x grid-margin-x">
                         <!-- Show the total value of your crypto wallet -->
-                        <div class="wallet-value cell small-5 float-center">
+                        <div id="value" class="wallet-value cell small-5 float-center">
                             <h2>Wallet Value</h2>
                         </div>
                         <!-- Shows the user every crypto currency they currently own including quantities -->
+
                         <div id="what-to-watch" class="crypto-owned cell small-7">
+                          
+              <div id="what-to-watch" class="crypto-owned cell medium-8">
+
                             <h2>Wallet Contents</h1>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
 
 
 
@@ -62,6 +67,25 @@
             </div>
             <div class="trending small-12 medium-4 cell">
                 <h2>Crypto Popular 7</h2>
+
+        <!-- Save these containers for future use -->
+        <div class="trend-container">
+feature/trending-coins
+            <div class="accounts-overview">
+                <div id="coin-results" class="search-results grid small-4 medium-4"></div>
+                <!-- <div class="price-tracker grid small-4 medium-4">
+
+            <div class="accounts-overview grid-x">
+                <div id="coin-results" class="search-results grid medium-4"></div>
+                <div class="price-tracker grid medium-4">
+ main
+                    <h2>Price Alerts</h2>
+                </div> -->
+                <div class="trending grid small-12 medium-12">
+                    <h2>Trending</h2>
+                    <div id="trending-container" class="trending"></div>
+                </div>
+
             </div>
         </div>
 
@@ -89,7 +113,11 @@
         </section>
     </main>
 
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
     <script src="./assets/js/script.js"></script>
 </body>
 

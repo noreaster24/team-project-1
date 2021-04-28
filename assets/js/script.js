@@ -1,9 +1,21 @@
 // global variables
+var storage = {};
 var cryptoFormEl = document.querySelector("#crypto-form");
 var searchButtonEl = document.querySelector("#search-btn");
 var cryptoInputEl = document.querySelector("#crypto-search");
 var cryptoInformationEL = document.querySelector("#search-info");
 var searchResultsEL = document.querySelector("#coin-results");
+var addToWallet = document.querySelector("#add-wallet");
+var whatToWatch = document.querySelector("#what-to-watch");
+var trendingCoinEl = document.querySelector("#trending-container");
+var walletValueEl = document.querySelector("#value");
+// undefiend variables
+var getCoinPrice;
+var getCoinName;
+var getCoinImg;
+var coinChangePercent;
+var coinPriceChange;
+
 
 // submit event handler
 var cryptoSubmitHandler = function (event) {
@@ -21,12 +33,57 @@ var cryptoSubmitHandler = function (event) {
         // needs modal here instead of console.log
         console.log("enter a crypto name.")
     }
-    
+
 }
+
+document.addEventListener("click", function (event) {
+    if (event.target && event.target.id == "add-wallet") {
+        event.preventDefault();
+
+        saveWatched();
+    
+    }
+    
+});
+
+function loadWatched() {
+    var walletEl = document.querySelector("#what-to-watch");
+    var crypto = JSON.parse(localStorage.getItem("crypto")) || [];
+    walletEl.innerHTML = ""
+    for (i = 0; i < crypto.length; i++) {
+        var coinEl = document.createElement("div");
+        coinEl.setAttribute("id", "coin-" + i);
+        var coinNameEl = document.createElement("h4");
+        coinNameEl.innerHTML = crypto[i].name
+        coinEl.appendChild(coinNameEl);
+
+
+    
+        walletEl.appendChild(coinEl);
+    }
+
+
+};
+
+function saveWatched() {
+
+    var grabCrypto = JSON.parse(localStorage.getItem("crypto")) || [];
+    grabCrypto.push({
+        price: getCoinPrice,
+        name: getCoinName,
+        image: getCoinImg,
+        percent: coinChangePercent,
+        priceChange: coinPriceChange
+    });
+    localStorage.setItem("crypto", JSON.stringify(grabCrypto));
+    loadWatched();
+
+}
+
 // fetch function to get type of coin by name.
 var getCrypto = function (cryptoName) {
 
-    var apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" + cryptoName
+    var apiUrl = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=" + cryptoName;
 
     fetch(apiUrl)
         .then(function (response) {
@@ -34,15 +91,14 @@ var getCrypto = function (cryptoName) {
             if (response.ok) {
                 response.json()
                     .then(function (data) {
-                        console.log(data);
 
                         // variables for internal information
-                        var getCoinPrice = data[0].current_price;
-                        var getCoinName = data[0].name;
-                        var getCoinImg = data[0].image;
-                        var coinChangePercent = data[0].price_change_percentage_24h;
-                        var coinPriceChange = data[0].price_change_24h;
-                        
+                        getCoinPrice = data[0].current_price;
+                        getCoinName = data[0].name;
+                        getCoinImg = data[0].image;
+                        coinChangePercent = data[0].price_change_percentage_24h;
+                        coinPriceChange = data[0].price_change_24h;
+
 
                         // create html elements 
 
@@ -50,12 +106,13 @@ var getCrypto = function (cryptoName) {
                         wallet.setAttribute("class", "pop-up-div");
 
                         var addBtnEl = document.createElement("button")
-                        addBtnEl.textContent = "Add to Wallet"
-                        addBtnEl.className = "search-btn";
-                        
+                        addBtnEl.textContent = "Add to Wallet";
+                        addBtnEl.setAttribute("id", "add-wallet");
+                        addBtnEl.classList = "btn search-btn"
+
                         var nameEl = document.createElement("h4");
                         nameEl.textContent = getCoinName + " ";
-                        
+
                         var imageEl = document.createElement("img");
                         imageEl.setAttribute("src", getCoinImg);
                         imageEl.setAttribute("alt", getCoinName + " icon");
@@ -76,7 +133,7 @@ var getCrypto = function (cryptoName) {
 
                         // append elements to the div
                         nameEl.appendChild(imageEl);
-                        wallet.appendChild(nameEl);                       
+                        wallet.appendChild(nameEl);
                         wallet.appendChild(priceEl);
                         wallet.appendChild(priceChangeEl);
                         wallet.appendChild(percentageChangeEL);
@@ -84,6 +141,10 @@ var getCrypto = function (cryptoName) {
                         // append div to the page
                         searchResultsEL.innerHTML = "";
                         searchResultsEL.appendChild(wallet);
+
+                        // localStorage.setItem("cryptoName", getCoinName);
+                        // localStorage.setItem("cryptoPrice", getCoinPrice);
+                        // localStorage.setItem("cryptoImg", getCoinImg);
                     });
             }
             else {
@@ -96,20 +157,21 @@ var getCrypto = function (cryptoName) {
 // below makes the heading flicker in upon load
 var target = window.document.getElementsByTagName('h1')[0]
 
-var flickerLetter = letter => `<span style="animation: text-flicker-in-glow ${Math.random()*4}s linear both ">${letter}</span>`
+var flickerLetter = letter => `<span style="animation: text-flicker-in-glow ${Math.random() * 4}s linear both ">${letter}</span>`
 var colorLetter = letter => `<span style="color: hsla">${letter}</span>`;
-var flickerAndColorText = text => 
-  text
-    .split('')
-    .map(flickerLetter)
-    .map(colorLetter)
-    .join('');
+var flickerAndColorText = text =>
+    text
+        .split('')
+        .map(flickerLetter)
+        .map(colorLetter)
+        .join('');
 var cryptoKnight = target => target.innerHTML = flickerAndColorText(target.textContent);
 
 
 cryptoKnight(target);
-target.onclick = ({ target }) =>  cryptoKnight(target);
+target.onclick = ({ target }) => cryptoKnight(target);
 // ^^^^^ END OF FLICKER^^^^^
+
 
 
 $( "img" ).click(function() {
@@ -121,14 +183,77 @@ $( "img" ).click(function() {
 
 // var cryptoDrop = function (cryptoName) {
 
-//     var getCurrentPrice = [0].current_price;
 
-//     console.log(getCurrentPrice);
+
+
+
+searchButtonEl.addEventListener("click", cryptoSubmitHandler);
+//addToWallet.addEventListener("click", eventButtonHandler);
+
 // }
+
+// API call to show the top trading cryptocurrencies within the last 24 hours
+var trendingCoins = function () {
+
+    var trendingApi = "https://api.coingecko.com/api/v3/search/trending"
+    fetch(trendingApi)
+        .then(function (response) {
+
+            if (response.ok) {
+                response.json()
+                    .then(function (data) {
+                        // console.log(data);
+                        trendingCoinEl.innerHTML = "";
+                        for (var i = 0; i <= 6; i++) {
+                            // variables for internal information
+                            var trendingCoinItem = data.coins[i].item;
+                            var trendingCoinId = data.coins[i].item.id;
+                            var trendingCoinName = data.coins[i].item.name;
+                            var trendingCoinImg = data.coins[i].item.large;
+                            var trendingCoinMarket = data.coins[i].item.market_cap_rank;
+
 
 
 // var eventButtonHandler = function(event) {
    
 
-// }
+                            var trendList = document.createElement("div");
+                            trendList.setAttribute("class", "pop-up-div");
+
+                            var trendingNameEl = document.createElement("h4");
+                            trendingNameEl.textContent = trendingCoinName + "  ";
+
+
+                            var trendingIdEl = document.createElement("p");
+                            trendingIdEl.textContent = "Search ID:  " + trendingCoinId;
+
+                            var trendingMarketEl = document.createElement("p");
+                            trendingMarketEl.textContent = "Market Cap Rating: " + trendingCoinMarket;
+
+                            var trendingImageEl = document.createElement("img");
+                            trendingImageEl.setAttribute("src", trendingCoinImg);
+                            trendingImageEl.style.width = "50px";
+                            trendingImageEl.style.height = "50px";
+
+                            // append elements to the trending dv
+                            trendList.appendChild(trendingMarketEl);
+                            trendList.appendChild(trendingIdEl);
+                            trendingNameEl.appendChild(trendingImageEl);
+                            trendList.appendChild(trendingNameEl);
+
+                            // append the div to the page
+
+                            trendingCoinEl.appendChild(trendList);
+
+                        }
+                    });
+            }
+            else {
+                console.log("error: " + response.statusText);
+            }
+        })
+};
+
 searchButtonEl.addEventListener("click", cryptoSubmitHandler);
+trendingCoins();
+loadWatched();
