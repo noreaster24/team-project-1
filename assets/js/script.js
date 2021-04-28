@@ -44,9 +44,9 @@ document.addEventListener("click", function (event) {
         var coinAmountEl = document.querySelector("#add-amount-input");
         coinAmount = parseFloat(coinAmountEl.value);
         saveWatched();
-    
+
     }
-    
+
 });
 
 function loadWatched() {
@@ -61,7 +61,7 @@ function loadWatched() {
         coinEl.appendChild(coinNameEl);
 
 
-    
+
         walletEl.appendChild(coinEl);
     }
     walletSum();
@@ -95,72 +95,75 @@ var getCrypto = function (cryptoName) {
             if (response.ok) {
                 response.json()
                     .then(function (data) {
-
-                        // variables for internal information
-                        getCoinPrice = data[0].current_price;
-                        getCoinName = data[0].name;
-                        getCoinImg = data[0].image;
-                        coinChangePercent = data[0].price_change_percentage_24h;
-                        coinPriceChange = data[0].price_change_24h;
-
-
-                        // create html elements 
-
-                        var wallet = document.createElement("div");
-                        wallet.setAttribute("class", "pop-up-div");
-
-                        var addBtnEl = document.createElement("button")
-                        addBtnEl.textContent = "Add to Wallet";
-                        addBtnEl.setAttribute("id", "add-wallet");
-                        addBtnEl.classList = "btn search-btn"
-
-                        var addAmountEl = document.createElement("input");
-                        addAmountEl.setAttribute("id", "add-amount-input");
-
-                        var nameEl = document.createElement("h4");
-                        nameEl.textContent = getCoinName + " ";
-
-                        var imageEl = document.createElement("img");
-                        imageEl.setAttribute("src", getCoinImg);
-                        imageEl.setAttribute("alt", getCoinName + " icon");
-                        imageEl.style.width = "50px";
-                        imageEl.style.height = "50px";
-
-                        var priceEl = document.createElement("p");
-                        priceEl.textContent = "Current Price: $" + getCoinPrice + " USD";
-                        wallet.setAttribute("class", "pop-up-p");
-
-                        var priceChangeEl = document.createElement("p");
-                        priceChangeEl.textContent = "Price change last 24hr: $" + coinPriceChange + " USD";
-                        wallet.setAttribute("class", "pop-up-p2");
-
-                        var percentageChangeEL = document.createElement("p");
-                        percentageChangeEL.textContent = "Percentage Change last 24hr: " + coinChangePercent + "%";
-                        wallet.setAttribute("class", "pop-up-p3");
-
-                        // append elements to the div
-                        nameEl.appendChild(imageEl);
-                        wallet.appendChild(nameEl);
-                        wallet.appendChild(priceEl);
-                        wallet.appendChild(priceChangeEl);
-                        wallet.appendChild(percentageChangeEL);
-                        wallet.appendChild(addAmountEl);
-                        wallet.appendChild(addBtnEl);
-                        // append div to the page
-                        searchResultsEL.innerHTML = "";
-                        searchResultsEL.appendChild(wallet);
-
-                        // localStorage.setItem("cryptoName", getCoinName);
-                        // localStorage.setItem("cryptoPrice", getCoinPrice);
-                        // localStorage.setItem("cryptoImg", getCoinImg);
+                        displayCryptoInputCard(data[0]);
                     });
             }
             else {
                 console.log("error: " + response.statusText);
             }
         })
-
 }
+
+/**
+ * Creates a crypto card on the page
+ * @param {*} cryptoData coin in coinGecko format
+ */
+function displayCryptoInputCard(cryptoData) {
+    // variables for internal information
+    getCoinPrice = cryptoData.current_price;
+    getCoinName = cryptoData.name;
+    getCoinImg = cryptoData.image;
+    coinChangePercent = cryptoData.price_change_percentage_24h;
+    coinPriceChange = cryptoData.price_change_24h;
+
+
+    // create html elements 
+
+    var wallet = document.createElement("div");
+    wallet.setAttribute("class", "pop-up-div");
+
+    var addBtnEl = document.createElement("button")
+    addBtnEl.textContent = "Add to Wallet";
+    addBtnEl.setAttribute("id", "add-wallet");
+    addBtnEl.classList = "btn search-btn"
+
+    var addAmountEl = document.createElement("input");
+    addAmountEl.setAttribute("id", "add-amount-input");
+
+    var nameEl = document.createElement("h4");
+    nameEl.textContent = getCoinName + " ";
+
+    var imageEl = document.createElement("img");
+    imageEl.setAttribute("src", getCoinImg);
+    imageEl.setAttribute("alt", getCoinName + " icon");
+    imageEl.style.width = "50px";
+    imageEl.style.height = "50px";
+
+    var priceEl = document.createElement("p");
+    priceEl.textContent = "Current Price: $" + getCoinPrice + " USD";
+    wallet.setAttribute("class", "pop-up-p");
+
+    var priceChangeEl = document.createElement("p");
+    priceChangeEl.textContent = "Price change last 24hr: $" + coinPriceChange + " USD";
+    wallet.setAttribute("class", "pop-up-p2");
+
+    var percentageChangeEL = document.createElement("p");
+    percentageChangeEL.textContent = "Percentage Change last 24hr: " + coinChangePercent + "%";
+    wallet.setAttribute("class", "pop-up-p3");
+
+    // append elements to the div
+    nameEl.appendChild(imageEl);
+    wallet.appendChild(nameEl);
+    wallet.appendChild(priceEl);
+    wallet.appendChild(priceChangeEl);
+    wallet.appendChild(percentageChangeEL);
+    wallet.appendChild(addAmountEl);
+    wallet.appendChild(addBtnEl);
+    // append div to the page
+    searchResultsEL.innerHTML = "";
+    searchResultsEL.appendChild(wallet);
+
+};
 
 // below makes the heading flicker in upon load
 var target = window.document.getElementsByTagName('h1')[0]
@@ -182,8 +185,8 @@ target.onclick = ({ target }) => cryptoKnight(target);
 
 
 
-$( "img" ).click(function() {
-  $( this ).hide().fadeIn(10000);
+$("img").click(function () {
+    $(this).hide().fadeIn(10000);
 });
 
 
@@ -222,8 +225,8 @@ var trendingCoins = function () {
 
 
 
-// var eventButtonHandler = function(event) {
-   
+                            // var eventButtonHandler = function(event) {
+
 
                             var trendList = document.createElement("div");
                             trendList.setAttribute("class", "pop-up-div");
