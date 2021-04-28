@@ -174,6 +174,16 @@ target.onclick = ({ target }) => cryptoKnight(target);
 
 
 
+$( "img" ).click(function() {
+  $( this ).hide().fadeIn(10000);
+});
+
+
+
+
+// var cryptoDrop = function (cryptoName) {
+
+
 
 
 
@@ -203,11 +213,16 @@ var trendingCoins = function () {
                             var trendingCoinMarket = data.coins[i].item.market_cap_rank;
 
 
+
+// var eventButtonHandler = function(event) {
+   
+
                             var trendList = document.createElement("div");
                             trendList.setAttribute("class", "pop-up-div");
 
                             var trendingNameEl = document.createElement("h4");
                             trendingNameEl.textContent = trendingCoinName + "  ";
+
 
                             var trendingIdEl = document.createElement("p");
                             trendingIdEl.textContent = "Search ID:  " + trendingCoinId;
