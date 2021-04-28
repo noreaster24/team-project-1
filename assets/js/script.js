@@ -8,6 +8,7 @@ var searchResultsEL = document.querySelector("#coin-results");
 var addToWallet = document.querySelector("#add-wallet");
 var whatToWatch = document.querySelector("#what-to-watch");
 var trendingCoinEl = document.querySelector("#trending-container");
+var walletSumEl = document.querySelector("#wallet-sum");
 
 // submit event handler
 var cryptoSubmitHandler = function (event) {
@@ -70,7 +71,7 @@ document.addEventListener("click", function (event) {
         // loadWatched();
     }
     if (whatToWatch === null) {
-        
+
 
     }
 
@@ -78,11 +79,11 @@ document.addEventListener("click", function (event) {
 
 function loadWatched() {
     console.log("load")
-//   var storage = document.getElementById("watching")
-//   storage.innerHTML = localStorage.getItem("crypto");
-   if(storage === null) {
-       alert("empty")
-   }
+    //   var storage = document.getElementById("watching")
+    //   storage.innerHTML = localStorage.getItem("crypto");
+    if (storage === null) {
+        alert("empty")
+    }
 }
 
 function saveWatched() {
@@ -209,14 +210,14 @@ var trendingCoins = function () {
                     .then(function (data) {
                         console.log(data);
                         trendingCoinEl.innerHTML = "";
-                    for (var i = 0; i <= 6; i++) {
+                        for (var i = 0; i <= 6; i++) {
                             // variables for internal information
                             var trendingCoinItem = data.coins[i].item;
                             var trendingCoinId = data.coins[i].item.id;
                             var trendingCoinName = data.coins[i].item.name;
                             var trendingCoinImg = data.coins[i].item.large;
                             var trendingCoinMarket = data.coins[i].item.market_cap_rank;
-                            
+
 
                             var trendList = document.createElement("div");
                             trendList.setAttribute("class", "pop-up-div");
@@ -242,9 +243,9 @@ var trendingCoins = function () {
                             trendList.appendChild(trendingNameEl);
 
                             // append the div to the page
-                            
+
                             trendingCoinEl.appendChild(trendList);
-                            
+
                         }
                     });
             }
@@ -254,5 +255,22 @@ var trendingCoins = function () {
         })
 };
 
+
+function walletSum() {
+    var walletCoinValue = JSON.parse(localStorage.getItem('cryptoObj'));
+    total = 0;
+    var i;
+    for (i = 0; i < walletCoinValue; i++) {
+        total += walletCoinValue[i].priceStorage;
+    }
+    console.log(total);
+}
+
+function walletSum() {
+    
+}
+
+
 searchButtonEl.addEventListener("click", cryptoSubmitHandler);
 trendingCoins();
+walletSum();
