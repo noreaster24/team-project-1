@@ -9,13 +9,14 @@ var addToWallet = document.querySelector("#add-wallet");
 var whatToWatch = document.querySelector("#what-to-watch");
 var trendingCoinEl = document.querySelector("#trending-container");
 var walletSumEl = document.querySelector("#wallet-sum");
-var walletValueEl = document.querySelector("#value");
 // undefined variables
 var getCoinPrice;
 var getCoinName;
 var getCoinImg;
 var coinChangePercent;
 var coinPriceChange;
+var total = 0;
+var coinAmount = 0;
 
 
 // submit event handler
@@ -40,7 +41,8 @@ var cryptoSubmitHandler = function (event) {
 document.addEventListener("click", function (event) {
     if (event.target && event.target.id == "add-wallet") {
         event.preventDefault();
-
+        var coinAmountEl = document.querySelector("#add-amount-input");
+        coinAmount = parseFloat(coinAmountEl.value);
         saveWatched();
     
     }
@@ -62,7 +64,7 @@ function loadWatched() {
     
         walletEl.appendChild(coinEl);
     }
-
+    walletSum();
 };
 
 function saveWatched() {
@@ -73,7 +75,9 @@ function saveWatched() {
         name: getCoinName,
         image: getCoinImg,
         percent: coinChangePercent,
-        priceChange: coinPriceChange
+        priceChange: coinPriceChange,
+        amount: coinAmount,
+        watchDate: Date()
     });
     localStorage.setItem("crypto", JSON.stringify(grabCrypto));
     loadWatched();
@@ -110,6 +114,9 @@ var getCrypto = function (cryptoName) {
                         addBtnEl.setAttribute("id", "add-wallet");
                         addBtnEl.classList = "btn search-btn"
 
+                        var addAmountEl = document.createElement("input");
+                        addAmountEl.setAttribute("id", "add-amount-input");
+
                         var nameEl = document.createElement("h4");
                         nameEl.textContent = getCoinName + " ";
 
@@ -137,6 +144,7 @@ var getCrypto = function (cryptoName) {
                         wallet.appendChild(priceEl);
                         wallet.appendChild(priceChangeEl);
                         wallet.appendChild(percentageChangeEL);
+                        wallet.appendChild(addAmountEl);
                         wallet.appendChild(addBtnEl);
                         // append div to the page
                         searchResultsEL.innerHTML = "";
@@ -256,17 +264,13 @@ var trendingCoins = function () {
 
 
 function walletSum() {
-    var walletCoinValue = JSON.parse(localStorage.getItem('cryptoObj'));
+    var wallet = JSON.parse(localStorage.getItem('crypto'));
     total = 0;
     var i;
-    for (i = 0; i < walletCoinValue; i++) {
-        total += walletCoinValue[i].priceStorage;
+    for (i = 0; i < wallet.length; i++) {
+        total += wallet[i].price * wallet[i].amount;
     }
-    console.log(total);
-}
-
-function walletSum() {
-    
+    walletSumEl.textContent = total;
 }
 
 
