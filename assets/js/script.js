@@ -41,9 +41,9 @@ document.addEventListener("click", function (event) {
         event.preventDefault();
 
         saveWatched();
-    
+
     }
-    
+
 });
 
 function loadWatched() {
@@ -53,12 +53,30 @@ function loadWatched() {
     for (i = 0; i < crypto.length; i++) {
         var coinEl = document.createElement("div");
         coinEl.setAttribute("id", "coin-" + i);
+        coinEl.classList = "pop-up-div btn"
+
         var coinNameEl = document.createElement("h4");
-        coinNameEl.innerHTML = crypto[i].name
+        coinNameEl.innerHTML = crypto[i].name + "   ";
         coinEl.appendChild(coinNameEl);
 
+        var coinImgEl = document.createElement("img");
+        coinImgEl.setAttribute("src", crypto[i].image);
+        coinImgEl.setAttribute("alt", crypto[i].name + "icon" )
+        coinImgEl.style.width = "35px";
+        coinImgEl.style.height = "35px";
+        coinNameEl.appendChild(coinImgEl);
 
-    
+        var coinPriceEl = document.createElement("p");
+        coinPriceEl.innerHTML = "Per Coin $" + crypto[i].price;
+        coinEl.appendChild(coinPriceEl);
+
+        var coinButtonEl = document.createElement("button");
+        coinButtonEl.innerHTML = "Delete"
+        coinButtonEl.classList = "search-btn btn"
+        coinEl.appendChild(coinButtonEl);
+
+
+
         walletEl.appendChild(coinEl);
     }
 
@@ -174,23 +192,12 @@ target.onclick = ({ target }) => cryptoKnight(target);
 
 
 
-$( "img" ).click(function() {
-  $( this ).hide().fadeIn(10000);
+$("img").click(function () {
+    $(this).hide().fadeIn(10000);
 });
 
 
 
-
-// var cryptoDrop = function (cryptoName) {
-
-
-
-
-
-searchButtonEl.addEventListener("click", cryptoSubmitHandler);
-//addToWallet.addEventListener("click", eventButtonHandler);
-
-// }
 
 // API call to show the top trading cryptocurrencies within the last 24 hours
 var trendingCoins = function () {
@@ -212,11 +219,7 @@ var trendingCoins = function () {
                             var trendingCoinImg = data.coins[i].item.large;
                             var trendingCoinMarket = data.coins[i].item.market_cap_rank;
 
-
-
-// var eventButtonHandler = function(event) {
-   
-
+                            // create elements for page
                             var trendList = document.createElement("div");
                             trendList.setAttribute("class", "pop-up-div");
 
