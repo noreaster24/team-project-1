@@ -218,7 +218,7 @@ var trendingCoins = function () {
                         for (var i = 0; i <= 6; i++) {
                             // variables for internal information
                             var trendingCoinItem = data.coins[i].item;
-                            var trendingCoinId = data.coins[i].item.id;
+                            let trendingCoinId = data.coins[i].item.id;
                             var trendingCoinName = data.coins[i].item.name;
                             var trendingCoinImg = data.coins[i].item.large;
                             var trendingCoinMarket = data.coins[i].item.market_cap_rank;
@@ -234,6 +234,12 @@ var trendingCoins = function () {
                             var trendingNameEl = document.createElement("h4");
                             trendingNameEl.textContent = trendingCoinName + "  ";
 
+                            var trendingButtonEl = document.createElement("button");
+                            trendingButtonEl.addEventListener("click", function () {
+                                // var trendingCoinId = trendingCoinId;
+                                getCrypto(trendingCoinId);
+                            })
+                            trendingButtonEl.textContent = "Add to List";
 
                             var trendingIdEl = document.createElement("p");
                             trendingIdEl.textContent = "Search ID:  " + trendingCoinId;
@@ -251,6 +257,7 @@ var trendingCoins = function () {
                             trendList.appendChild(trendingIdEl);
                             trendingNameEl.appendChild(trendingImageEl);
                             trendList.appendChild(trendingNameEl);
+                            trendList.appendChild(trendingButtonEl);
 
                             // append the div to the page
 
@@ -267,7 +274,7 @@ var trendingCoins = function () {
 
 
 function walletSum() {
-    var wallet = JSON.parse(localStorage.getItem('crypto'));
+    var wallet = JSON.parse(localStorage.getItem('crypto')) || [];
     total = 0;
     var i;
     for (i = 0; i < wallet.length; i++) {
