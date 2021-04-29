@@ -47,7 +47,7 @@ document.addEventListener("click", function (event) {
         coinAmount = parseFloat(coinAmountEl.value);
         saveWatched();
 
-    } 
+    }
 
 });
 
@@ -63,7 +63,8 @@ function loadWatched() {
 
         dateEl = document.createElement("p");
         dateEl.innerHTML = grabCrypto[i].watchDate;
-        coinEl.appendChild(dateEl);
+        // removing until we can improve the date format
+        // coinEl.appendChild(dateEl);
 
         var coinNameEl = document.createElement("h4");
         coinNameEl.innerHTML = grabCrypto[i].name + "   ";
@@ -82,14 +83,14 @@ function loadWatched() {
 
         var coinButtonEl = document.createElement("button");
         coinButtonEl.innerHTML = "Delete"
-        coinButtonEl.classList = "search-btn btn"
+        coinButtonEl.classList = "delete-btn"
         coinButtonEl.addEventListener("click", function (event) {
             event.preventDefault();
             event.target.parentElement.style.display = "none"
             walletSum();
             var coinId = event.target.parentElement.id.split("coin-")[1];
             grabCrypto = grabCrypto.filter(cryptoObj => cryptoObj.id !== coinId)
-           
+
             localStorage.setItem("crypto", JSON.stringify(grabCrypto));
         })
 
@@ -171,14 +172,14 @@ function displayCryptoInputCard(cryptoData) {
     var addBtnEl = document.createElement("button")
     addBtnEl.textContent = "Add to Wallet";
     addBtnEl.setAttribute("id", "add-wallet");
-    addBtnEl.classList = "btn search-btn"
+    addBtnEl.classList = "btn add-btn"
     addBtnEl.addEventListener("click", function () {
         addBtnEl.remove();
     })
 
     var addAmountEl = document.createElement("input");
     addAmountEl.setAttribute("id", "add-amount-input");
-    
+
 
     var nameEl = document.createElement("h4");
     nameEl.textContent = getCoinName + " ";
