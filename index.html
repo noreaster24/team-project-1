@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <header class="header grid-x">
+    <header class="header grid-x grid-container-fluid">
 
         <h1 class="cell">CryptoKnight</h1>
 
@@ -56,28 +56,27 @@
                 </div>
             </div>
 
-            <div class="container-full">
+            <div class="">
                 <div id="coin-results" class="search-results small-12 medium-4 cell"></div>
             </div>
 
 
             <div class="accounts-overview grid-container-fluid grid-x">
 
-                <div class="price-tracker small-12 medium-4 cell">
-
+                <div class="price-tracker cell large-6">
                     <h2>Price Alerts</h2>
                 </div>
+                
                 <div class="trending small-12 medium-4 cell">
-                    <h2>Crypto Popular 7</h2>
-
-                    <!-- Save these containers for future use -->
+                    <h2>Popular Crypto</h2>
+            
                     <div class="trend-container">
                         feature/trending-coins
-                        <div class="accounts-overview">
-                            <div id="coin-results" class="search-results grid small-4 medium-4"></div>
+                        <div class="accounts-overview grid-container-fluid">
+                            <div id="coin-results" class="search-results cell large-6"></div>
 
 
-                            <div id="trending-container" class="trending grid small-12 medium-12">
+                            <div id="trending-container" class="trending cell large-6">
                                 <h2>Trending</h2>
                                 <div id="trending-ctr" class="trending"></div>
                             </div>

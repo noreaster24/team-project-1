@@ -20,7 +20,6 @@ header {
 }
 
 .search-box {
-    background-color: #0F1123;
     border-radius: 20px;
     border-color: var(--secondary-color);
     text-align: center;
@@ -54,20 +53,15 @@ header {
     text-align: center;
 }
 
-.price-tracker {
-    border: 2px solid var(--tertiary-color);
-    border-radius: 20px;
+.price-tracker, .price-tracker h2 {
     padding: 20px;
     margin: 30px;
-    box-shadow: 4px 4px var(--secondary-color);
+    text-align: center;
 }
 
 .trending {
-    border: 2px solid var(--tertiary-color);
-    border-radius: 20px;
     padding: 20px;
     margin: 30px;
-    box-shadow: 4px 4px var(--secondary-color);
 }
 
 .price-checker h2 {
@@ -80,15 +74,14 @@ header {
 .search-container {
     border: 1px solid var(--tertiary-color); 
     border-radius: 20px;
-    padding: 20px;
+    padding: 20px 0 20px 0;
     margin: 0 20px 0 20px;
     box-shadow: 4px 4px var(--secondary-color);
     
 }
 
 .search-container p {
-    font-size: 20px;
-    color: var(--tertiary-color);
+    font-size: 15px;
     text-align: center;
     margin: 0 10px;
     font-family: sans-serif;
@@ -162,14 +155,14 @@ header {
 .wallet-value h2 {
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
-}
-
-.container {
-    margin-right: auto;
 }
  
-
+#add-amount-input {
+    text-align: center;
+    color: black;
+    height: auto;
+    width: 15%;
+}
 
 
 
