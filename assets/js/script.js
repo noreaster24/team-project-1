@@ -20,7 +20,7 @@ var total = 0;
 var coinAmount = 0;
 // local storage 
 var grabCrypto = JSON.parse(localStorage.getItem("crypto")) || [];
-console.log(grabCrypto)
+
 // submit event handler
 var cryptoSubmitHandler = function (event) {
     event.preventDefault();
@@ -86,7 +86,7 @@ function loadWatched() {
         coinButtonEl.addEventListener("click", function (event) {
             event.preventDefault();
             event.target.parentElement.style.display = "none"
-
+            walletSum();
             var coinId = event.target.parentElement.id.split("coin-")[1];
             grabCrypto = grabCrypto.filter(cryptoObj => cryptoObj.id !== coinId)
            
