@@ -162,10 +162,10 @@ header {
 .wallet-value h2 {
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 .container {
-    margin-left: auto;
     margin-right: auto;
 }
  
