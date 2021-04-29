@@ -17,8 +17,9 @@ var coinChangePercent;
 var coinPriceChange;
 var total = 0;
 var coinAmount = 0;
-
-
+// local storage 
+var grabCrypto = JSON.parse(localStorage.getItem("crypto")) || [];
+console.log(grabCrypto)
 // submit event handler
 var cryptoSubmitHandler = function (event) {
     event.preventDefault();
@@ -51,44 +52,59 @@ document.addEventListener("click", function (event) {
 
 function loadWatched() {
     var walletEl = document.querySelector("#what-to-watch");
-    var crypto = JSON.parse(localStorage.getItem("crypto")) || [];
+
     walletEl.innerHTML = ""
-    for (i = 0; i < crypto.length; i++) {
+    for (i = 0; i < grabCrypto.length; i++) {
         var coinEl = document.createElement("div");
-        coinEl.setAttribute("id", "coin-" + i);
-        coinEl.classList = "pop-up-div btn"
+        coinEl.setAttribute("id", "coin-" + grabCrypto[i].id);
+        coinEl.classList = "pop-up-div delete";
+
+
+        dateEl = document.createElement("p");
+        dateEl.innerHTML = grabCrypto[i].watchDate;
+        coinEl.appendChild(dateEl);
 
         var coinNameEl = document.createElement("h4");
-        coinNameEl.innerHTML = crypto[i].name + "   ";
+        coinNameEl.innerHTML = grabCrypto[i].name + "   ";
         coinEl.appendChild(coinNameEl);
 
         var coinImgEl = document.createElement("img");
-        coinImgEl.setAttribute("src", crypto[i].image);
-        coinImgEl.setAttribute("alt", crypto[i].name + "icon" )
+        coinImgEl.setAttribute("src", grabCrypto[i].image);
+        coinImgEl.setAttribute("alt", grabCrypto[i].name + "icon")
         coinImgEl.style.width = "35px";
         coinImgEl.style.height = "35px";
         coinNameEl.appendChild(coinImgEl);
 
         var coinPriceEl = document.createElement("p");
-        coinPriceEl.innerHTML = "Per Coin $" + crypto[i].price;
+        coinPriceEl.innerHTML = "Per Coin $" + grabCrypto[i].price;
         coinEl.appendChild(coinPriceEl);
 
         var coinButtonEl = document.createElement("button");
         coinButtonEl.innerHTML = "Delete"
         coinButtonEl.classList = "search-btn btn"
+        coinButtonEl.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.target.parentElement.style.display = "none"
+
+            var coinId = event.target.parentElement.id.split("coin-")[1];
+            grabCrypto = grabCrypto.filter(cryptoObj => cryptoObj.id !== coinId)
+        
+            localStorage.setItem("crypto", JSON.stringify(grabCrypto));
+        })
+
         coinEl.appendChild(coinButtonEl);
 
-
-
-
         walletEl.appendChild(coinEl);
+       
     }
+
+   
     walletSum();
+
 };
 
 function saveWatched() {
-
-    var grabCrypto = JSON.parse(localStorage.getItem("crypto")) || [];
+    console.log(grabCrypto)
     grabCrypto.push({
         price: getCoinPrice,
         name: getCoinName,
@@ -96,11 +112,21 @@ function saveWatched() {
         percent: coinChangePercent,
         priceChange: coinPriceChange,
         amount: coinAmount,
-        watchDate: Date()
+        watchDate: Date(),
+        id: create_UUID()
     });
     localStorage.setItem("crypto", JSON.stringify(grabCrypto));
     loadWatched();
 
+}
+function create_UUID(){
+    var dt = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (dt + Math.random()*16)%16 | 0;
+        dt = Math.floor(dt/16);
+        return (c=='x' ? r :(r&0x3|0x8)).toString(16);
+    });
+    return uuid;
 }
 
 // fetch function to get type of coin by name.
@@ -145,6 +171,9 @@ function displayCryptoInputCard(cryptoData) {
     addBtnEl.textContent = "Add to Wallet";
     addBtnEl.setAttribute("id", "add-wallet");
     addBtnEl.classList = "btn search-btn"
+    addBtnEl.addEventListener("click", function () {
+        addBtnEl.remove();
+    })
 
     var addAmountEl = document.createElement("input");
     addAmountEl.setAttribute("id", "add-amount-input");
@@ -225,26 +254,22 @@ var trendingCoins = function () {
                         trendingCoinEl.innerHTML = "";
                         for (var i = 0; i <= 6; i++) {
                             // variables for internal information
-                            var trendingCoinItem = data.coins[i].item;
                             let trendingCoinId = data.coins[i].item.id;
                             var trendingCoinName = data.coins[i].item.name;
                             var trendingCoinImg = data.coins[i].item.large;
                             var trendingCoinMarket = data.coins[i].item.market_cap_rank;
 
-
-
-                            // var eventButtonHandler = function(event) {
-
-
+                            // create elements for page
                             var trendList = document.createElement("div");
                             trendList.setAttribute("class", "pop-up-div");
 
                             var trendingNameEl = document.createElement("h4");
                             trendingNameEl.textContent = trendingCoinName + "  ";
 
+                            // button with an event listener built into it
                             var trendingButtonEl = document.createElement("button");
                             trendingButtonEl.addEventListener("click", function () {
-                                // var trendingCoinId = trendingCoinId;
+                                // get info from getCrypto()
                                 getCrypto(trendingCoinId);
                             })
                             trendingButtonEl.textContent = "Add to List";
@@ -268,7 +293,6 @@ var trendingCoins = function () {
                             trendList.appendChild(trendingButtonEl);
 
                             // append the div to the page
-
                             trendingCoinEl.appendChild(trendList);
 
                         }
@@ -282,16 +306,48 @@ var trendingCoins = function () {
 
 
 function walletSum() {
-    var wallet = JSON.parse(localStorage.getItem('crypto')) || [];
+
     total = 0;
     var i;
-    for (i = 0; i < wallet.length; i++) {
-        total += wallet[i].price * wallet[i].amount;
+    for (i = 0; i < grabCrypto.length; i++) {
+        total += grabCrypto[i].price * grabCrypto[i].amount;
     }
     walletSumEl.textContent = total;
 }
 
+function cryptoGlobal() {
+    const urlApi = "https://api.coinpaprika.com/v1/global"
+    fetch(urlApi)
+        .then(function (response) {
+
+            if (response.ok) {
+                response.json()
+                    .then(function (data) {
+
+                        // console.log(data);
+                        let global1 = data.bitcoin_dominance_percentage;
+                        // console.log(global1);
+                        var global2 = data.cryptocurrencies_number;
+                        var global3 = data.bitcoin_dominance_percentage;
+
+                        var global4 = data.market_cap_ath_value;
+                        var global5 = data.market_cap_change_24h;
+                        var global6 = data.market_cap_usd;
+                        // console.log(global4)
+                        // console.log(global5)
+                        // console.log(global6 + " usd")
+
+                    });
+            }
+            else {
+                console.log("error: " + response.statusText);
+            }
+        })
+}
+
+
 
 searchButtonEl.addEventListener("click", cryptoSubmitHandler);
+cryptoGlobal();
 trendingCoins();
 loadWatched();
