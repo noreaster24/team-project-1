@@ -35,7 +35,7 @@ header {
 .price-checker h2{
     color: var(--primary-color);
     font-family: 'Monoton';
-    text-shadow: 5px 5px 5px var(--primary-color);
+    text-shadow: 5px 5px 30px var(--primary-color);
 }
 
 .price-checker p {
@@ -44,7 +44,7 @@ header {
 
 .wallet-value h2 {
     font-family: 'Monoton';
-    text-shadow: 3px 3px 10px var(--primary-color); 
+    text-shadow: 5px 5px 30px var(--primary-color); 
 }
 
 .wallet-value h2 span {
@@ -113,7 +113,7 @@ header {
     margin-bottom: 0;
     text-align:center;
     border-bottom: 2px var(--tertiary-color);
-    text-shadow: 5px 5px 5px var(--primary-color);
+    text-shadow: 5px 5px 30px var(--primary-color);
 }
 
 .trend-container {
@@ -136,7 +136,7 @@ header {
 
 .global h4 {
     font-family: 'Monoton';
-    text-shadow: 5px 5px 5px var(--primary-color);
+    text-shadow: 5px 5px 30px var(--primary-color);
 }
 
 .price-checker h2 {
