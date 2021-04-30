@@ -67,8 +67,8 @@ function loadWatched() {
 
 
         dateEl = document.createElement("p");
-        dateEl.innerHTML = grabCrypto[i].watchDate + " " + " " + " Coins Owned: " + grabCrypto[i].amount;
-        dateEl.style.width = "18%"
+        dateEl.innerHTML = grabCrypto[i].watchDate + ": " + " " + " Coins-Owned: " + grabCrypto[i].amount;
+        dateEl.style.width = "35%"
         dateEl.style.margin = "20px"
        
 
@@ -80,7 +80,7 @@ function loadWatched() {
         var coinImgEl = document.createElement("img");
         coinImgEl.setAttribute("src", grabCrypto[i].image);
         coinImgEl.setAttribute("alt", grabCrypto[i].name + "icon")
-        coinImgEl.style.width = "35%";
+        coinImgEl.style.width = "45%";
 
         var coinPriceEl = document.createElement("p");
         coinPriceEl.innerHTML = "Per Coin $" + grabCrypto[i].price;
