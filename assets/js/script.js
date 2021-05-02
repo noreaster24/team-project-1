@@ -90,6 +90,7 @@ function loadWatched() {
         var coinButtonEl = document.createElement("button");
         coinButtonEl.innerHTML = "Delete";
         coinButtonEl.classList = "delete-btn";
+        
         // add event listener for delete button
         coinButtonEl.addEventListener("click", function (event) {
             event.preventDefault();
@@ -192,6 +193,7 @@ function displayCryptoInputCard(cryptoData) {
     var addAmountEl = document.createElement("input");
     addAmountEl.setAttribute("id", "add-amount-input");
     addAmountEl.setAttribute("placeholder", "Select Amount of Coins");
+    addAmountEl.style.width = "36%";
     addAmountEl.classList = "search-box";
 
 
