@@ -10,6 +10,10 @@ var whatToWatch = document.querySelector("#what-to-watch");
 var trendingCoinEl = document.querySelector("#trending-container");
 var walletSumEl = document.querySelector("#wallet-sum");
 var globalChart = document.querySelector("#global-charts");
+var newTime = new Date();
+var dateObj = { year: 'numeric', month: 'long', day: 'numeric' };
+var thisDate = newTime.toLocaleDateString("en-US", dateObj);
+var greenOrRed = document.createElement("span");
 // undefined variables
 var getCoinPrice;
 var getCoinName;
@@ -20,7 +24,7 @@ var total = 0;
 var coinAmount = 0;
 // local storage 
 var grabCrypto = JSON.parse(localStorage.getItem("crypto")) || [];
-console.log(grabCrypto)
+
 // submit event handler
 var cryptoSubmitHandler = function (event) {
     event.preventDefault();
@@ -53,58 +57,65 @@ document.addEventListener("click", function (event) {
 
 function loadWatched() {
     var walletEl = document.querySelector("#what-to-watch");
-
+    // empties wallet in loop
     walletEl.innerHTML = ""
     for (i = 0; i < grabCrypto.length; i++) {
+        // create elements to append on page
         var coinEl = document.createElement("div");
         coinEl.setAttribute("id", "coin-" + grabCrypto[i].id);
         coinEl.classList = "pop-up-div delete cell";
 
 
         dateEl = document.createElement("p");
-        dateEl.innerHTML = grabCrypto[i].watchDate;
-        // removing until we can improve the date format
-        // coinEl.appendChild(dateEl);
+        dateEl.innerHTML = grabCrypto[i].watchDate + ": " + " " + " Coins-Owned: " + grabCrypto[i].amount;
+        dateEl.style.width = "35%"
+        dateEl.style.margin = "20px"
+       
 
         var coinNameEl = document.createElement("h4");
         coinNameEl.innerHTML = grabCrypto[i].name + "   ";
-        coinEl.appendChild(coinNameEl);
+        coinNameEl.style.width = "15%"
+        
 
         var coinImgEl = document.createElement("img");
         coinImgEl.setAttribute("src", grabCrypto[i].image);
         coinImgEl.setAttribute("alt", grabCrypto[i].name + "icon")
-        coinImgEl.style.width = "35px";
-        coinImgEl.style.height = "35px";
-        coinNameEl.appendChild(coinImgEl);
+        coinImgEl.style.width = "45%";
 
         var coinPriceEl = document.createElement("p");
         coinPriceEl.innerHTML = "Per Coin $" + grabCrypto[i].price;
-        coinEl.appendChild(coinPriceEl);
+        coinPriceEl.style.width = "20%"
+        
 
         var coinButtonEl = document.createElement("button");
-        coinButtonEl.innerHTML = "Delete"
-        coinButtonEl.classList = "delete-btn"
+        coinButtonEl.innerHTML = "Delete";
+        coinButtonEl.classList = "delete-btn";
+        // add event listener for delete button
         coinButtonEl.addEventListener("click", function (event) {
             event.preventDefault();
             event.target.parentElement.style.display = "none"
-
+            walletSum();
             var coinId = event.target.parentElement.id.split("coin-")[1];
             grabCrypto = grabCrypto.filter(cryptoObj => cryptoObj.id !== coinId)
 
             localStorage.setItem("crypto", JSON.stringify(grabCrypto));
         })
-
+        // append elements to div
+        coinEl.appendChild(coinPriceEl);
+        coinEl.appendChild(coinNameEl);
+        coinNameEl.appendChild(coinImgEl);
+        coinEl.appendChild(dateEl);
         coinEl.appendChild(coinButtonEl);
-
+        // append div to section
         walletEl.appendChild(coinEl);
 
     }
 
-
+// add wallet sum to the page
     walletSum();
 
 };
-
+// object save function
 function saveWatched() {
     console.log(grabCrypto)
     grabCrypto.push({
@@ -114,13 +125,14 @@ function saveWatched() {
         percent: coinChangePercent,
         priceChange: coinPriceChange,
         amount: coinAmount,
-        watchDate: Date(),
+        watchDate: thisDate,
         id: create_UUID()
     });
     localStorage.setItem("crypto", JSON.stringify(grabCrypto));
     loadWatched();
 
 }
+// created uuid for delete button
 function create_UUID() {
     var dt = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -179,6 +191,8 @@ function displayCryptoInputCard(cryptoData) {
 
     var addAmountEl = document.createElement("input");
     addAmountEl.setAttribute("id", "add-amount-input");
+    addAmountEl.setAttribute("placeholder", "Select Amount of Coins");
+    addAmountEl.classList = "search-box";
 
 
     var nameEl = document.createElement("h4");
@@ -201,6 +215,7 @@ function displayCryptoInputCard(cryptoData) {
     var percentageChangeEL = document.createElement("p");
     percentageChangeEL.textContent = "Percentage Change last 24hr: " + coinChangePercent + "%";
     wallet.setAttribute("class", "pop-up-p3");
+    
 
     // append elements to the div
     nameEl.appendChild(imageEl);
@@ -267,31 +282,45 @@ var trendingCoins = function () {
                             trendList.classList = "pop-up-div cell";
 
                             var trendingNameEl = document.createElement("h4");
-                            trendingNameEl.textContent = trendingCoinName + "  ";
+                            trendingNameEl.textContent = trendingCoinName + " ";
+                            trendingNameEl.style.width = "20%";
+                            trendingNameEl.style.height = "100%";
+                            
+
 
                             // button with an event listener built into it
                             var trendingButtonEl = document.createElement("button");
+                            trendingButtonEl.textContent = "Add to List";
+                            trendingButtonEl.classList = "search-btn"
+                            trendingButtonEl.style.width = "15%"
+                            trendingButtonEl.style.height = "50px"
+                            trendingButtonEl.style.margin = "5px"
                             trendingButtonEl.addEventListener("click", function () {
                                 // get info from getCrypto()
                                 getCrypto(trendingCoinId);
                             })
-                            trendingButtonEl.textContent = "Add to List";
+                            
 
                             var trendingIdEl = document.createElement("p");
                             trendingIdEl.textContent = "Search ID:  " + trendingCoinId;
+                            trendingIdEl.style.width = "20%";
+                            trendingIdEl.style.height = "100%";
+                            trendingIdEl.style.margin = "20px";
 
                             var trendingMarketEl = document.createElement("p");
                             trendingMarketEl.textContent = "Market Cap Rating: " + trendingCoinMarket;
+                            trendingMarketEl.style.margin = "20px";
 
                             var trendingImageEl = document.createElement("img");
                             trendingImageEl.setAttribute("src", trendingCoinImg);
-                            trendingImageEl.style.width = "50px";
-                            trendingImageEl.style.height = "50px";
+                            trendingImageEl.style.width = "8%";
+                            
+                          
 
                             // append elements to the trending dv
                             trendList.appendChild(trendingMarketEl);
                             trendList.appendChild(trendingIdEl);
-                            trendingNameEl.appendChild(trendingImageEl);
+                            trendList.appendChild(trendingImageEl);
                             trendList.appendChild(trendingNameEl);
                             trendList.appendChild(trendingButtonEl);
 
@@ -334,26 +363,44 @@ function cryptoGlobal() {
                         var globalVolumeChange = data.volume_24h_change_24h;
 
                         var globalDiv = document.createElement("div");
-                        globalDiv.classList = "pop-up-div"
-
+                        globalDiv.classList = "global"
+                        
                         var globalList = document.createElement("ul");
 
+                        var globalListValue = document.createElement("h4");
+                        globalListValue.innerHTML = "Global Market Value";
+
                         var globalCap = document.createElement("p");
-                        globalCap.innerHTML = "Market Cap: " + globalMarketCap;
+                        globalCap.innerHTML = "Market Cap: " + globalMarketCap + " Change:" ;
+ 
+                        
 
                         var globalCapChange = document.createElement("span");
-                        globalCapChange.innerHTML = "   " + "Change: " + globalMarketChange + "%";
+                        globalCapChange.innerHTML = "   " + globalMarketChange + "%";
+                        if(globalMarketChange < 0) {
+                            globalCapChange.classList.add("negative");
+                         }else {
+                             globalCapChange.classList.add("positive")
+                         }
 
                         var globalVolume = document.createElement("p");
-                        globalVolume.innerHTML = "        Volume 24Hr: " + global24Hr;
+                        globalVolume.innerHTML = "Volume 24Hr: " + global24Hr + " Change:";
 
                         var globalVol24 = document.createElement("span");
-                        globalVol24.innerHTML = "      " + "Change: " + globalVolumeChange + "%";
+                        globalVol24.innerHTML = " " + globalVolumeChange + "%";
+                        if(globalVolumeChange < 0) {
+                            globalVol24.classList.add("negative");
+                         }else {
+                             globalVol24.classList.add("positive")
+                         }
 
                         var globalBitCoinDom = document.createElement("p");
-                        globalBitCoinDom.innerHTML = "       BTC Dominance: " + globalDomPercentage + "%";
+                        globalBitCoinDom.innerHTML = "BTC Dominance: " + globalDomPercentage + "%";
+                        globalBitCoinDom.style.width = "60%"
+                        
 
                         // append to div
+                        globalList.appendChild(globalListValue);
                         globalList.appendChild(globalCap);
                         globalCap.appendChild(globalCapChange);
                         globalList.appendChild(globalVolume);

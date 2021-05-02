@@ -29,38 +29,58 @@ header {
     padding: 5px;
     text-shadow: 3px 4px var(--primary-color);
     text-shadow: none;
-    text-align: left;
+    text-align: center;
+}
+
+.price-checker h2{
+    color: var(--primary-color);
+    font-family: 'Monoton';
+    text-shadow: 5px 5px 30px var(--primary-color);
+}
+
+.price-checker p {
+    color: var(--primary-color);
+}
+
+.wallet-value h2 {
+    font-family: 'Monoton';
+    text-shadow: 5px 5px 30px var(--primary-color); 
+}
+
+.wallet-value h2 span {
+    font-family: 'Rajdhani';
+    text-shadow: none;
 }
 
 .search-container {
     border: 1px solid var(--tertiary-color); 
     border-radius: 20px;
     padding: 20px;
-    margin: 0 20px 0 20px;
-    box-shadow: 4px 4px var(--secondary-color);
+    box-shadow: 4px 4px  var(--secondary-color);
     
 }
 
 .search-container p {
     font-size: 20px;
-    color: var(--tertiary-color);
-    /* text-align: center; */
+    color: var(--primary-color);
+    text-align: center; 
     margin: 0 10px;
     padding: 5px;
-    font-family: sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     
 }
 
 .search-box {
+    font-family: 'Rajdhani', cursive;
     background-color: #0F1123;
     border-radius: 20px;
     border-color: var(--secondary-color);
     text-align: center;
-    font-family: sans-serif;
     margin: 10px;
 }
 
 .search-box::placeholder {
+    font-family: 'Rajdhani', cursive;
     color: var(--tertiary-color);
 }
 
@@ -76,28 +96,47 @@ header {
 }
 
 .price-tracker {
-    border: 2px solid var(--tertiary-color);
-    border-radius: 20px;
-    padding: 20px;
+    /*border: 2px solid var(--tertiary-color);*/
+    /*border-radius: 20px;*/
+    /*padding: 20px;*/
     margin: 30px;
-    box-shadow: 4px 4px var(--secondary-color);
+    /*box-shadow: 4px 4px var(--secondary-color);*/
+    text-align: center;
 }
 
 .trending {
-    border-radius: 20px;
     padding: 20px;
-    margin: 30px;
-    box-shadow: 4px 4px var(--secondary-color);
+    font-family: 'Rajdhani';
 }
 .trending h2 {
+    font-family: 'Monoton';
     margin-bottom: 0;
-    text-align:left;
+    text-align:center;
+    border-bottom: 2px var(--tertiary-color);
+    text-shadow: 5px 5px 30px var(--primary-color);
 }
 
 .trend-container {
     margin: 0;
     padding: 0;
     
+}
+
+.global {
+    font-family: 'Rajdhani';
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+    text-align: center;
+    border: 2px solid var(--tertiary-color);
+    border-radius: 20px;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.global h4 {
+    font-family: 'Monoton';
+    text-shadow: 5px 5px 30px var(--primary-color);
 }
 
 .price-checker h2 {
@@ -123,15 +162,19 @@ header {
     height: 3rem;
     border-radius: 20px;
     margin-left: 10px;
+    width: 100%;
+    font-family: 'Rajdhani', cursive;
 }
 
 .search-btn:hover {
     transform: translateY(4px);
     color: var(--primary-color);
     background-color: var(--secondary-color);
+    font-family: 'Rajdhani', cursive;
 }
 
 .add-btn {
+    font-family: 'Rajdhani', cursive;
     color: var(--secondary-color);
     background-color: var(--primary-color);
     cursor: pointer;
@@ -149,27 +192,48 @@ header {
     background-color: var(--secondary-color);
 }
 .pop-up-div {
+    font-family: 'Rajdhani', cursive;
     display: flex;
-
+    flex-wrap: wrap;
+    padding: 5px;
+    text-align: center;
+    border: 2px solid var(--tertiary-color);
+    border-radius: 20px;
+    justify-content: space-between;
+    margin: 10px;
+}
+.search-results {
+    font-family: 'Rajdhani', cursive;
 }
 .search-results h4,
 .pop-up-div h4 {
     color: var(--primary-color);
-    font-family: 'Pacifico', cursive;
+    font-family: 'Rajdhani', cursive;
     font-size: 30px;
     margin-bottom: 0;
     margin-left: 10px;
     padding: 5px;
-    text-shadow: 4px 4px var(--tertiary-color);
+    text-shadow: 2px 2px var(--tertiary-color);
 }
 .pop-up-p3 {
     border: 2px solid var(--tertiary-color);
     border-radius: 20px;
     padding: 20px;
-    margin: 30px;
+    margin: 30px 0 0;
     box-shadow: 4px 4px var(--secondary-color);
     text-align: center;
-    font-family: sans-serif;
+    font-family: 'Rajdhani', cursive;
+}
+
+.negative {
+    color: rgb(252, 63, 63);
+  text-shadow: 2px 2px 2px rgba(231, 142, 142, .5);
+}
+
+.positive {
+    color: rgb(20, 177, 20);
+    text-shadow: 2px 2px 2px rgba(142, 231, 169, 0.5);
+
 }
 
 .accounts-overview {
@@ -202,8 +266,8 @@ header {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
-    width: 10%;
-    height: 1.4rem;
+    width: 20%;
+    height: 1.5rem;
     border-radius: 20px;
     margin: auto;
 }
@@ -224,12 +288,17 @@ header {
     margin-right: auto;
 }
 
-.pop-up-div {
-    margin-left: 20px;
-    border: 0px solid var(--tertiary-color);
-    border-radius: 10px;
-    padding: 5px;
-    box-shadow: 1px 1px var(--secondary-color);
+#add-amount-input {
+    font-family: 'Rajdhani', cursive;
+    text-align: center;
+    color:var(--primary-color);
+    height: 2rem;
+    border: 1px solid var(--secondary-color);
+    box-shadow: inset 0 1px 2px rgb(10 10 10 / 10%);
+    transition: box-shadow .5s,border-color .25s ease-in-out,-webkit-box-shadow .5s;
+    appearance: none;
+    box-sizing: border-box;
+    border-radius: 20px;
 }
 
 @-webkit-keyframes text-flicker-in-glow{0%{opacity:0}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:none}10.2%{opacity:0;text-shadow:none}20%{opacity:0;text-shadow:none}20.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10)}20.6%{opacity:0;text-shadow:none}30%{opacity:0;text-shadow:none}30.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}30.5%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}30.6%{opacity:0;text-shadow:none}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}50%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}55%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}55.1%{opacity:0;text-shadow:none}57%{opacity:0;text-shadow:none}57.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35)}60%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35)}60.1%{opacity:0;text-shadow:none}65%{opacity:0;text-shadow:none}65.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75.1%{opacity:0;text-shadow:none}77%{opacity:0;text-shadow:none}77.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.4),0 0 110px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.4),0 0 110px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85.1%{opacity:0;text-shadow:none}86%{opacity:0;text-shadow:none}86.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.10),0 0 110px rgba(255,255,255,.10),0 0 100px rgba(255,255,255,.1)}100%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.10),0 0 110px rgba(255,255,255,.10),0 0 100px rgba(255,255,255,.1)}}@keyframes text-flicker-in-glow{0%{opacity:0}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:none}10.2%{opacity:0;text-shadow:none}20%{opacity:0;text-shadow:none}20.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10)}20.6%{opacity:0;text-shadow:none}30%{opacity:0;text-shadow:none}30.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}30.5%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}30.6%{opacity:0;text-shadow:none}10%{opacity:0;text-shadow:none}10.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}50%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}55%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.10)}55.1%{opacity:0;text-shadow:none}57%{opacity:0;text-shadow:none}57.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35)}60%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35)}60.1%{opacity:0;text-shadow:none}65%{opacity:0;text-shadow:none}65.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.35),0 0 100px rgba(255,255,255,.1)}75.1%{opacity:0;text-shadow:none}77%{opacity:0;text-shadow:none}77.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.4),0 0 110px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.10),0 0 60px rgba(255,255,255,.4),0 0 110px rgba(255,255,255,.2),0 0 100px rgba(255,255,255,.1)}85.1%{opacity:0;text-shadow:none}86%{opacity:0;text-shadow:none}86.1%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.10),0 0 110px rgba(255,255,255,.10),0 0 100px rgba(255,255,255,.1)}100%{opacity:1;text-shadow:0 0 30px rgba(255,255,255,.6),0 0 60px rgba(255,255,255,.10),0 0 110px rgba(255,255,255,.10),0 0 100px rgba(255,255,255,.1)}}
@@ -312,6 +381,7 @@ section{
     animation:fall 15s linear infinite ;
     animation-delay:-4s;
 }
+
  
  
 @keyframes fall{
