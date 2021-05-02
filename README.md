@@ -3,7 +3,7 @@
 CryptoKnight is a CryptoCurrency watcher.
 
 
-![open_page](./assets/images/open-page.png)
+![open-page](./assets/Images/open-page.png)
 
 ## Description
 
@@ -13,15 +13,15 @@ We designed CryptoKnight to be a useful dashboard for cryptocurrency investors t
 * Once added to your Wallet, CryptoKnight will show you your total profit or loss on your investments for each cryptocurrency, as well as your total Wallet value and profit/loss.
 
 ## Search Results
-![search_bar](./assets/images/search-bar.png)
+![search_bar](./assets/Images/search-bar.png)
 
 ## Watched List
 
-![watch_list](./assets/images/watched-list.png)
+![watch_list](./assets/Images/watched-list.png)
 
 ## Top Trending Crypto
 
-![top_trending](./assets/images/trending-list.png)
+![top_trending](./assets/Images/trending-list.png)
 
 ## Technologies Used
 ### Front-End Framework
