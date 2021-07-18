@@ -37,6 +37,9 @@ We designed CryptoKnight to be a useful dashboard for cryptocurrency investors t
 Pull requests are always welcome. If you would like to make changes please open an issue first.
 
 ## links to pages
+- Original Repo link
+- https://github.com/noreaster24/team-project-1
+
 - GitHub Repository link
 https://github.com/noreaster24/team-project-1
 
